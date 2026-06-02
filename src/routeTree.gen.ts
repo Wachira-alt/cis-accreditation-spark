@@ -9,8 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as Part3RouteImport } from './routes/part-3'
+import { Route as Part2RouteImport } from './routes/part-2'
+import { Route as Part1RouteImport } from './routes/part-1'
 import { Route as IndexRouteImport } from './routes/index'
 
+const Part3Route = Part3RouteImport.update({
+  id: '/part-3',
+  path: '/part-3',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Part2Route = Part2RouteImport.update({
+  id: '/part-2',
+  path: '/part-2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Part1Route = Part1RouteImport.update({
+  id: '/part-1',
+  path: '/part-1',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +37,61 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/part-1': typeof Part1Route
+  '/part-2': typeof Part2Route
+  '/part-3': typeof Part3Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/part-1': typeof Part1Route
+  '/part-2': typeof Part2Route
+  '/part-3': typeof Part3Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/part-1': typeof Part1Route
+  '/part-2': typeof Part2Route
+  '/part-3': typeof Part3Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/part-1' | '/part-2' | '/part-3'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/part-1' | '/part-2' | '/part-3'
+  id: '__root__' | '/' | '/part-1' | '/part-2' | '/part-3'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  Part1Route: typeof Part1Route
+  Part2Route: typeof Part2Route
+  Part3Route: typeof Part3Route
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/part-3': {
+      id: '/part-3'
+      path: '/part-3'
+      fullPath: '/part-3'
+      preLoaderRoute: typeof Part3RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-2': {
+      id: '/part-2'
+      path: '/part-2'
+      fullPath: '/part-2'
+      preLoaderRoute: typeof Part2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-1': {
+      id: '/part-1'
+      path: '/part-1'
+      fullPath: '/part-1'
+      preLoaderRoute: typeof Part1RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +104,20 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  Part1Route: Part1Route,
+  Part2Route: Part2Route,
+  Part3Route: Part3Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
