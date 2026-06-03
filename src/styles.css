@@ -1,17 +1,44 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
-@import "@fontsource/libre-baskerville/400.css";
-@import "@fontsource/libre-baskerville/700.css";
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/500.css";
-@import "@fontsource/inter/600.css";
+
+@font-face {
+  font-family: "Century Gothic";
+  src: url("./assets/fonts/GOTHIC.TTF") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Century Gothic";
+  src: url("./assets/fonts/GOTHICB.TTF") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Century Gothic";
+  src: url("./assets/fonts/GOTHICI.TTF") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Century Gothic";
+  src: url("./assets/fonts/GOTHICBI.TTF") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-serif: "Libre Baskerville", Georgia, "Times New Roman", serif;
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: "Century Gothic", Georgia, serif;
+  --font-sans: "Century Gothic", Arial, sans-serif;
 
   --radius-sm: 2px;
   --radius-md: 4px;
@@ -45,17 +72,18 @@
 }
 
 :root {
-  --paper: oklch(0.985 0.003 80);              /* warm off-white */
-  --background: var(--paper);
-  --foreground: oklch(0.27 0.01 250);          /* near charcoal */
-  --ink: oklch(0.27 0.01 250);
+  --paper: #ffffff;
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+--ink: #1a1a1a;
+--muted-foreground: #3a3a3a;
 
   --card: oklch(1 0 0);
   --card-foreground: var(--foreground);
   --popover: oklch(1 0 0);
   --popover-foreground: var(--foreground);
 
-  --brand: oklch(0.46 0.16 25);                /* crest red ~ #A8252C */
+  --brand: oklch(0.46 0.16 25);
   --brand-foreground: oklch(0.985 0.003 80);
 
   --primary: var(--brand);
@@ -79,25 +107,49 @@
   * {
     border-color: var(--color-border);
   }
+
   html {
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
+
   body {
-    background-color: var(--color-background);
+    background-color: #ffffff;
     color: var(--color-foreground);
   }
-  h1, h2, h3, h4 {
-    font-family: var(--font-serif);
-    color: var(--color-ink);
-    letter-spacing: -0.01em;
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 65%;
+    height: 100%;
+    background-image: url("/tree-watermark.jpeg");
+    background-size: contain;
+    background-position: right top;
+    background-repeat: no-repeat;
+    opacity: 0.58;
+    z-index: -1;
+    pointer-events: none;
   }
+
+  h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  color: var(--color-brand);
+  letter-spacing: -0.01em;
+}
+
   a {
     color: var(--color-brand);
     text-underline-offset: 3px;
+     text-decoration: none;           
+  transition: color 150ms ease;
   }
+
   a:hover {
     text-decoration: underline;
+     color: #800000;  
   }
 }

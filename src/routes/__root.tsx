@@ -13,7 +13,6 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
-import treeWatermark from "../assets/tree-watermark.jpeg.asset.json";
 
 function NotFoundComponent() {
   return (
@@ -119,12 +118,6 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="relative min-h-screen flex flex-col">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none fixed top-0 right-0 z-0 w-[55vw] max-w-[720px] opacity-70"
-        >
-          <img src={treeWatermark.url} alt="" className="w-full h-auto select-none" />
-        </div>
         <div className="relative z-10 flex flex-col flex-1 min-h-screen">
           <SiteHeader />
           <main className="flex-1">

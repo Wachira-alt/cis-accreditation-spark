@@ -23,34 +23,34 @@ function Overview() {
           <p className="text-xs uppercase tracking-[0.22em] text-brand font-medium">
             CIS International Accreditation
           </p>
-          <h1 className="mt-4 font-serif text-5xl leading-tight">
+          <h1 className="mt-4 font-serif text-5xl leading-tight text-brand">
             Accreditation Portfolio
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground max-w-2xl">
+          <p className="mt-6 text-lg leading-relaxed text-foreground max-w-2xl">
             A collection of reflections and evidence prepared by Woodcreek School for the
             Council of International Schools, organised in three parts following the CIS
             Portfolio Guide.
           </p>
           <dl className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
             <div>
-              <dt className="uppercase tracking-wider text-xs text-muted-foreground">School</dt>
-              <dd className="mt-1 font-serif text-base text-ink">Woodcreek School, Kenya</dd>
+              <dt className="uppercase tracking-wider text-xs text-foreground">School</dt>
+              <dd className="mt-1 font-serif text-base text-brand">Woodcreek School, Kenya</dd>
             </div>
             <div>
-              <dt className="uppercase tracking-wider text-xs text-muted-foreground">Stage</dt>
-              <dd className="mt-1 font-serif text-base text-ink">Preparatory Engagement</dd>
+              <dt className="uppercase tracking-wider text-xs text-foreground">Stage</dt>
+              <dd className="mt-1 font-serif text-base text-brand">Preparatory Engagement</dd>
             </div>
             <div>
-              <dt className="uppercase tracking-wider text-xs text-muted-foreground">Visit dates</dt>
-              <dd className="mt-1 font-serif text-base text-ink">14 – 17 September 2026</dd>
+              <dt className="uppercase tracking-wider text-xs text-foreground">Visit dates</dt>
+              <dd className="mt-1 font-serif text-base text-brand">14 – 17 September 2026</dd>
             </div>
           </dl>
         </div>
       </section>
 
       <section className="mx-auto max-w-4xl px-6 py-16">
-        <h2 className="font-serif text-2xl">Contents</h2>
-        <p className="mt-2 text-[15px] text-muted-foreground max-w-prose">
+        <h2 className="font-serif text-2xl text-brand">Contents</h2>
+        <p className="mt-2 text-[15px] text-foreground max-w-prose">
           Each part below contains short reflections together with hyperlinks to the
           underlying evidence held in our document repository.
         </p>
@@ -67,14 +67,14 @@ function Overview() {
                     to={`/${s.id}`}
                     className="no-underline hover:no-underline"
                   >
-                    <h3 className="font-serif text-xl text-ink hover:text-brand transition-colors">
+                    <h3 className="font-serif text-xl text-brand hover:text-brand transition-colors">
                       {s.title}
                     </h3>
                   </Link>
-                  <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground max-w-prose">
+                  <p className="mt-2 text-[15px] leading-relaxed text-foreground max-w-prose">
                     {s.intro}
                   </p>
-                  <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground">
+                  <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm text-foreground">
                     {s.subsections.map((sub) => (
                       <li key={sub.id}>· {sub.title}</li>
                     ))}
