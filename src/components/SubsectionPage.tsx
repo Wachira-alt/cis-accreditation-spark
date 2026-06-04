@@ -75,7 +75,7 @@ function RotatingHero({ sub }: { sub: Subsection }) {
         style={{ opacity: fading ? 0 : 1 }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
-      <div className="absolute inset-0 flex flex-col justify-end max-w-4xl mx-auto px-8 pb-10">
+      <div className="relative flex flex-col justify-end max-w-4xl mx-auto px-8 pt-32 pb-10 min-h-[22rem]">
         <p className="text-xs uppercase tracking-[0.22em] text-white/70 font-medium mb-2">
           {sub.title.split(".")[0].trim()}
         </p>
