@@ -1,42 +1,62 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { sections } from "@/lib/portfolio-data";
 import { useEffect, useState } from "react";
 
 const OVERVIEW_IMAGES = [
-  "/images/part-1-hero.jpg",
-  "/images/part-2-hero.jpg",
-  "/images/part-3-hero.jpg",
-  "/images/school-context.jpg",
-  "/images/community-voices.jpg",
-  "/images/planning.jpg",
+  "/images/DSC_9211.jpg",
+  "/images/DSC_8996.jpg",
+  "/images/DSC_8934.jpg",
+  "/images/DSC_8738.jpg",
 ];
 
 function RotatingHero() {
   const [current, setCurrent] = useState(0);
+  const [prev, setPrev] = useState<number | null>(null);
   const [fading, setFading] = useState(false);
+
+  function goTo(i: number) {
+    if (i === current || fading) return;
+    setPrev(current);
+    setFading(false);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setCurrent(i);
+        setFading(true);
+        setTimeout(() => {
+          setPrev(null);
+          setFading(false);
+        }, 1000);
+      });
+    });
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setFading(true);
-      setTimeout(() => {
-        setCurrent((prev) => (prev + 1) % OVERVIEW_IMAGES.length);
-        setFading(false);
-      }, 600);
+      goTo((current + 1) % OVERVIEW_IMAGES.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [current, fading]);
 
   return (
-    <div className="relative h-[420px] overflow-hidden">
+    <div className="relative w-full aspect-[21/9] overflow-hidden bg-neutral-300">
+      {/* Current image — always fully opaque underneath */}
       <img
-        key={current}
         src={OVERVIEW_IMAGES[current]}
         alt=""
-        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
-        style={{ opacity: fading ? 0 : 1 }}
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ zIndex: 0 }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-transparent" />
-      <div className="absolute inset-0 flex flex-col justify-end max-w-4xl mx-auto px-8 pb-12">
+      {/* Previous image — sits on top and fades out */}
+      {prev !== null && (
+        <img
+          src={OVERVIEW_IMAGES[prev]}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+          style={{ opacity: fading ? 0 : 1, zIndex: 1 }}
+        />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-transparent" style={{ zIndex: 2 }} />
+      <div className="absolute inset-0 flex flex-col justify-end max-w-4xl mx-auto px-8 pb-12" style={{ zIndex: 3 }}>
         <p className="text-xs uppercase tracking-[0.22em] text-white/70 font-medium mb-3">
           CIS International Accreditation
         </p>
@@ -62,14 +82,11 @@ function RotatingHero() {
           </div>
         </dl>
       </div>
-      <div className="absolute bottom-4 right-6 flex gap-1.5">
+      <div className="absolute bottom-4 right-6 flex gap-1.5" style={{ zIndex: 3 }}>
         {OVERVIEW_IMAGES.map((_, i) => (
           <button
             key={i}
-            onClick={() => {
-              setFading(true);
-              setTimeout(() => { setCurrent(i); setFading(false); }, 300);
-            }}
+            onClick={() => goTo(i)}
             className="w-1.5 h-1.5 rounded-full transition-all duration-300"
             style={{
               backgroundColor: i === current ? "white" : "rgba(255,255,255,0.35)",
