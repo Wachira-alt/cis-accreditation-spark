@@ -131,30 +131,28 @@ export function SectionLanding({ section }: { section: Section }) {
               <div
                 key={sub.id}
                 onClick={() => navigate({ to: href as any })}
-                className="group relative overflow-hidden rounded-sm text-left w-full cursor-pointer transition-all duration-300 hover:-translate-y-1"
+                className="group relative overflow-hidden rounded-sm text-left w-full cursor-pointer transition-all duration-300 hover:-translate-y-1 h-72"
                 style={{ animationDelay: `${i * 80}ms` }}
               >
-                <div className="relative h-52 overflow-hidden">
-                  <img
-                    src={image}
-                    alt=""
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  <span className="absolute top-4 left-4 font-sans text-xs uppercase tracking-[0.2em] text-white/90 bg-brand/80 px-2 py-1 rounded-sm">
-                    {sub.title.split(".")[0].trim()}
-                  </span>
-                </div>
-                <div className="border border-t-0 border-rule px-5 py-5 bg-white group-hover:bg-[#fafafa] transition-colors duration-200">
-                  <h3 className="font-serif text-lg text-brand leading-snug">
+                <img
+                  src={image}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/10" />
+                <span className="absolute top-4 left-4 font-sans text-[10px] uppercase tracking-[0.2em] text-white bg-brand/90 px-2 py-1 rounded-sm">
+                  {sub.title.split(".")[0].trim()}
+                </span>
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <h3 className="font-serif text-lg text-white leading-snug drop-shadow">
                     {sub.title.includes(".")
                       ? sub.title.substring(sub.title.indexOf(".") + 1).trim()
                       : sub.title}
                   </h3>
-                  <p className="mt-2 text-sm text-foreground leading-relaxed line-clamp-2">
+                  <p className="mt-2 text-[13px] text-white/85 leading-relaxed line-clamp-2">
                     {sub.description}
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-brand font-medium">
+                  <span className="mt-3 inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.15em] text-white font-medium">
                     View documents
                     <svg
                       className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1"
