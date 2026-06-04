@@ -66,7 +66,7 @@ function RotatingHero({ sub }: { sub: Subsection }) {
   }, [images.length]);
 
   return (
-    <div className="relative h-72 overflow-hidden">
+    <div className="relative min-h-[22rem] overflow-hidden">
       <img
         key={current}
         src={images[current]}
@@ -75,7 +75,7 @@ function RotatingHero({ sub }: { sub: Subsection }) {
         style={{ opacity: fading ? 0 : 1 }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
-      <div className="absolute inset-0 flex flex-col justify-end max-w-4xl mx-auto px-8 pb-10">
+      <div className="relative flex flex-col justify-end max-w-4xl mx-auto px-8 pt-32 pb-10 min-h-[22rem]">
         <p className="text-xs uppercase tracking-[0.22em] text-white/70 font-medium mb-2">
           {sub.title.split(".")[0].trim()}
         </p>
@@ -84,7 +84,7 @@ function RotatingHero({ sub }: { sub: Subsection }) {
             ? sub.title.substring(sub.title.indexOf(".") + 1).trim()
             : sub.title}
         </h1>
-        <p className="mt-3 text-sm text-white/75 max-w-xl leading-relaxed line-clamp-2">
+        <p className="mt-3 text-sm text-white/85 max-w-xl leading-relaxed">
           {sub.description}
         </p>
       </div>
@@ -128,9 +128,9 @@ export function SubsectionPage({
         {/* Back link */}
         <Link
           to={backTo}
-          className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] font-medium text-white bg-brand hover:bg-[#800000] px-4 py-2.5 rounded-sm shadow-sm transition-colors no-underline hover:no-underline mb-10"
+          className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-brand hover:text-[#800000] font-medium transition-colors no-underline hover:no-underline mb-8"
         >
-          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
           </svg>
           {backLabel}
