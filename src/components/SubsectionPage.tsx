@@ -128,18 +128,13 @@ export function SubsectionPage({
         {/* Back link */}
         <Link
           to={backTo}
-          className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-foreground/40 hover:text-brand transition-colors no-underline hover:no-underline mb-10"
+          className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] font-medium text-white bg-brand hover:bg-[#800000] px-4 py-2.5 rounded-sm shadow-sm transition-colors no-underline hover:no-underline mb-10"
         >
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
           </svg>
           {backLabel}
         </Link>
-
-        {/* Description */}
-        <p className="text-[15px] leading-relaxed text-foreground max-w-2xl mb-10">
-          {sub.description}
-        </p>
 
         {/* Evidence links */}
         {sub.links.length > 0 ? (
