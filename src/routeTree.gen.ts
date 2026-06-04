@@ -9,10 +9,10 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as Part3RouteImport } from './routes/part-3'
-import { Route as Part2RouteImport } from './routes/part-2'
-import { Route as Part1RouteImport } from './routes/part-1'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as Part3IndexRouteImport } from './routes/part-3/index'
+import { Route as Part2IndexRouteImport } from './routes/part-2/index'
+import { Route as Part1IndexRouteImport } from './routes/part-1/index'
 import { Route as Part3OverviewRouteImport } from './routes/part-3/overview'
 import { Route as Part2PurposeSelfAssessmentRouteImport } from './routes/part-2/purpose-self-assessment'
 import { Route as Part2PurposeRouteImport } from './routes/part-2/purpose'
@@ -28,106 +28,103 @@ import { Route as Part1LeadershipInsightsRouteImport } from './routes/part-1/lea
 import { Route as Part1CommunityVoicesRouteImport } from './routes/part-1/community-voices'
 import { Route as Part1CommunityDataRouteImport } from './routes/part-1/community-data'
 
-const Part3Route = Part3RouteImport.update({
-  id: '/part-3',
-  path: '/part-3',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Part2Route = Part2RouteImport.update({
-  id: '/part-2',
-  path: '/part-2',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Part1Route = Part1RouteImport.update({
-  id: '/part-1',
-  path: '/part-1',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Part3IndexRoute = Part3IndexRouteImport.update({
+  id: '/part-3/',
+  path: '/part-3/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Part2IndexRoute = Part2IndexRouteImport.update({
+  id: '/part-2/',
+  path: '/part-2/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Part1IndexRoute = Part1IndexRouteImport.update({
+  id: '/part-1/',
+  path: '/part-1/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Part3OverviewRoute = Part3OverviewRouteImport.update({
-  id: '/overview',
-  path: '/overview',
-  getParentRoute: () => Part3Route,
+  id: '/part-3/overview',
+  path: '/part-3/overview',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const Part2PurposeSelfAssessmentRoute =
   Part2PurposeSelfAssessmentRouteImport.update({
-    id: '/purpose-self-assessment',
-    path: '/purpose-self-assessment',
-    getParentRoute: () => Part2Route,
+    id: '/part-2/purpose-self-assessment',
+    path: '/part-2/purpose-self-assessment',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const Part2PurposeRoute = Part2PurposeRouteImport.update({
-  id: '/purpose',
-  path: '/purpose',
-  getParentRoute: () => Part2Route,
+  id: '/part-2/purpose',
+  path: '/part-2/purpose',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const Part2PracticesSelfAssessmentRoute =
   Part2PracticesSelfAssessmentRouteImport.update({
-    id: '/practices-self-assessment',
-    path: '/practices-self-assessment',
-    getParentRoute: () => Part2Route,
+    id: '/part-2/practices-self-assessment',
+    path: '/part-2/practices-self-assessment',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const Part2PracticesOrganisationRoute =
   Part2PracticesOrganisationRouteImport.update({
-    id: '/practices-organisation',
-    path: '/practices-organisation',
-    getParentRoute: () => Part2Route,
+    id: '/part-2/practices-organisation',
+    path: '/part-2/practices-organisation',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const Part2PracticesD3Route = Part2PracticesD3RouteImport.update({
-  id: '/practices-d3',
-  path: '/practices-d3',
-  getParentRoute: () => Part2Route,
+  id: '/part-2/practices-d3',
+  path: '/part-2/practices-d3',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const Part2PracticesD2Route = Part2PracticesD2RouteImport.update({
-  id: '/practices-d2',
-  path: '/practices-d2',
-  getParentRoute: () => Part2Route,
+  id: '/part-2/practices-d2',
+  path: '/part-2/practices-d2',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const Part2PracticesD1Route = Part2PracticesD1RouteImport.update({
-  id: '/practices-d1',
-  path: '/practices-d1',
-  getParentRoute: () => Part2Route,
+  id: '/part-2/practices-d1',
+  path: '/part-2/practices-d1',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const Part2PlanningSelfAssessmentRoute =
   Part2PlanningSelfAssessmentRouteImport.update({
-    id: '/planning-self-assessment',
-    path: '/planning-self-assessment',
-    getParentRoute: () => Part2Route,
+    id: '/part-2/planning-self-assessment',
+    path: '/part-2/planning-self-assessment',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const Part2PlanningRoute = Part2PlanningRouteImport.update({
-  id: '/planning',
-  path: '/planning',
-  getParentRoute: () => Part2Route,
+  id: '/part-2/planning',
+  path: '/part-2/planning',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const Part1SchoolContextRoute = Part1SchoolContextRouteImport.update({
-  id: '/school-context',
-  path: '/school-context',
-  getParentRoute: () => Part1Route,
+  id: '/part-1/school-context',
+  path: '/part-1/school-context',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const Part1LeadershipInsightsRoute = Part1LeadershipInsightsRouteImport.update({
-  id: '/leadership-insights',
-  path: '/leadership-insights',
-  getParentRoute: () => Part1Route,
+  id: '/part-1/leadership-insights',
+  path: '/part-1/leadership-insights',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const Part1CommunityVoicesRoute = Part1CommunityVoicesRouteImport.update({
-  id: '/community-voices',
-  path: '/community-voices',
-  getParentRoute: () => Part1Route,
+  id: '/part-1/community-voices',
+  path: '/part-1/community-voices',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const Part1CommunityDataRoute = Part1CommunityDataRouteImport.update({
-  id: '/community-data',
-  path: '/community-data',
-  getParentRoute: () => Part1Route,
+  id: '/part-1/community-data',
+  path: '/part-1/community-data',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/part-1': typeof Part1RouteWithChildren
-  '/part-2': typeof Part2RouteWithChildren
-  '/part-3': typeof Part3RouteWithChildren
   '/part-1/community-data': typeof Part1CommunityDataRoute
   '/part-1/community-voices': typeof Part1CommunityVoicesRoute
   '/part-1/leadership-insights': typeof Part1LeadershipInsightsRoute
@@ -142,12 +139,12 @@ export interface FileRoutesByFullPath {
   '/part-2/purpose': typeof Part2PurposeRoute
   '/part-2/purpose-self-assessment': typeof Part2PurposeSelfAssessmentRoute
   '/part-3/overview': typeof Part3OverviewRoute
+  '/part-1/': typeof Part1IndexRoute
+  '/part-2/': typeof Part2IndexRoute
+  '/part-3/': typeof Part3IndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/part-1': typeof Part1RouteWithChildren
-  '/part-2': typeof Part2RouteWithChildren
-  '/part-3': typeof Part3RouteWithChildren
   '/part-1/community-data': typeof Part1CommunityDataRoute
   '/part-1/community-voices': typeof Part1CommunityVoicesRoute
   '/part-1/leadership-insights': typeof Part1LeadershipInsightsRoute
@@ -162,13 +159,13 @@ export interface FileRoutesByTo {
   '/part-2/purpose': typeof Part2PurposeRoute
   '/part-2/purpose-self-assessment': typeof Part2PurposeSelfAssessmentRoute
   '/part-3/overview': typeof Part3OverviewRoute
+  '/part-1': typeof Part1IndexRoute
+  '/part-2': typeof Part2IndexRoute
+  '/part-3': typeof Part3IndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/part-1': typeof Part1RouteWithChildren
-  '/part-2': typeof Part2RouteWithChildren
-  '/part-3': typeof Part3RouteWithChildren
   '/part-1/community-data': typeof Part1CommunityDataRoute
   '/part-1/community-voices': typeof Part1CommunityVoicesRoute
   '/part-1/leadership-insights': typeof Part1LeadershipInsightsRoute
@@ -183,14 +180,14 @@ export interface FileRoutesById {
   '/part-2/purpose': typeof Part2PurposeRoute
   '/part-2/purpose-self-assessment': typeof Part2PurposeSelfAssessmentRoute
   '/part-3/overview': typeof Part3OverviewRoute
+  '/part-1/': typeof Part1IndexRoute
+  '/part-2/': typeof Part2IndexRoute
+  '/part-3/': typeof Part3IndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/part-1'
-    | '/part-2'
-    | '/part-3'
     | '/part-1/community-data'
     | '/part-1/community-voices'
     | '/part-1/leadership-insights'
@@ -205,12 +202,12 @@ export interface FileRouteTypes {
     | '/part-2/purpose'
     | '/part-2/purpose-self-assessment'
     | '/part-3/overview'
+    | '/part-1/'
+    | '/part-2/'
+    | '/part-3/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/part-1'
-    | '/part-2'
-    | '/part-3'
     | '/part-1/community-data'
     | '/part-1/community-voices'
     | '/part-1/leadership-insights'
@@ -225,12 +222,12 @@ export interface FileRouteTypes {
     | '/part-2/purpose'
     | '/part-2/purpose-self-assessment'
     | '/part-3/overview'
+    | '/part-1'
+    | '/part-2'
+    | '/part-3'
   id:
     | '__root__'
     | '/'
-    | '/part-1'
-    | '/part-2'
-    | '/part-3'
     | '/part-1/community-data'
     | '/part-1/community-voices'
     | '/part-1/leadership-insights'
@@ -245,163 +242,17 @@ export interface FileRouteTypes {
     | '/part-2/purpose'
     | '/part-2/purpose-self-assessment'
     | '/part-3/overview'
+    | '/part-1/'
+    | '/part-2/'
+    | '/part-3/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  Part1Route: typeof Part1RouteWithChildren
-  Part2Route: typeof Part2RouteWithChildren
-  Part3Route: typeof Part3RouteWithChildren
-}
-
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/part-3': {
-      id: '/part-3'
-      path: '/part-3'
-      fullPath: '/part-3'
-      preLoaderRoute: typeof Part3RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/part-2': {
-      id: '/part-2'
-      path: '/part-2'
-      fullPath: '/part-2'
-      preLoaderRoute: typeof Part2RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/part-1': {
-      id: '/part-1'
-      path: '/part-1'
-      fullPath: '/part-1'
-      preLoaderRoute: typeof Part1RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/part-3/overview': {
-      id: '/part-3/overview'
-      path: '/overview'
-      fullPath: '/part-3/overview'
-      preLoaderRoute: typeof Part3OverviewRouteImport
-      parentRoute: typeof Part3Route
-    }
-    '/part-2/purpose-self-assessment': {
-      id: '/part-2/purpose-self-assessment'
-      path: '/purpose-self-assessment'
-      fullPath: '/part-2/purpose-self-assessment'
-      preLoaderRoute: typeof Part2PurposeSelfAssessmentRouteImport
-      parentRoute: typeof Part2Route
-    }
-    '/part-2/purpose': {
-      id: '/part-2/purpose'
-      path: '/purpose'
-      fullPath: '/part-2/purpose'
-      preLoaderRoute: typeof Part2PurposeRouteImport
-      parentRoute: typeof Part2Route
-    }
-    '/part-2/practices-self-assessment': {
-      id: '/part-2/practices-self-assessment'
-      path: '/practices-self-assessment'
-      fullPath: '/part-2/practices-self-assessment'
-      preLoaderRoute: typeof Part2PracticesSelfAssessmentRouteImport
-      parentRoute: typeof Part2Route
-    }
-    '/part-2/practices-organisation': {
-      id: '/part-2/practices-organisation'
-      path: '/practices-organisation'
-      fullPath: '/part-2/practices-organisation'
-      preLoaderRoute: typeof Part2PracticesOrganisationRouteImport
-      parentRoute: typeof Part2Route
-    }
-    '/part-2/practices-d3': {
-      id: '/part-2/practices-d3'
-      path: '/practices-d3'
-      fullPath: '/part-2/practices-d3'
-      preLoaderRoute: typeof Part2PracticesD3RouteImport
-      parentRoute: typeof Part2Route
-    }
-    '/part-2/practices-d2': {
-      id: '/part-2/practices-d2'
-      path: '/practices-d2'
-      fullPath: '/part-2/practices-d2'
-      preLoaderRoute: typeof Part2PracticesD2RouteImport
-      parentRoute: typeof Part2Route
-    }
-    '/part-2/practices-d1': {
-      id: '/part-2/practices-d1'
-      path: '/practices-d1'
-      fullPath: '/part-2/practices-d1'
-      preLoaderRoute: typeof Part2PracticesD1RouteImport
-      parentRoute: typeof Part2Route
-    }
-    '/part-2/planning-self-assessment': {
-      id: '/part-2/planning-self-assessment'
-      path: '/planning-self-assessment'
-      fullPath: '/part-2/planning-self-assessment'
-      preLoaderRoute: typeof Part2PlanningSelfAssessmentRouteImport
-      parentRoute: typeof Part2Route
-    }
-    '/part-2/planning': {
-      id: '/part-2/planning'
-      path: '/planning'
-      fullPath: '/part-2/planning'
-      preLoaderRoute: typeof Part2PlanningRouteImport
-      parentRoute: typeof Part2Route
-    }
-    '/part-1/school-context': {
-      id: '/part-1/school-context'
-      path: '/school-context'
-      fullPath: '/part-1/school-context'
-      preLoaderRoute: typeof Part1SchoolContextRouteImport
-      parentRoute: typeof Part1Route
-    }
-    '/part-1/leadership-insights': {
-      id: '/part-1/leadership-insights'
-      path: '/leadership-insights'
-      fullPath: '/part-1/leadership-insights'
-      preLoaderRoute: typeof Part1LeadershipInsightsRouteImport
-      parentRoute: typeof Part1Route
-    }
-    '/part-1/community-voices': {
-      id: '/part-1/community-voices'
-      path: '/community-voices'
-      fullPath: '/part-1/community-voices'
-      preLoaderRoute: typeof Part1CommunityVoicesRouteImport
-      parentRoute: typeof Part1Route
-    }
-    '/part-1/community-data': {
-      id: '/part-1/community-data'
-      path: '/community-data'
-      fullPath: '/part-1/community-data'
-      preLoaderRoute: typeof Part1CommunityDataRouteImport
-      parentRoute: typeof Part1Route
-    }
-  }
-}
-
-interface Part1RouteChildren {
   Part1CommunityDataRoute: typeof Part1CommunityDataRoute
   Part1CommunityVoicesRoute: typeof Part1CommunityVoicesRoute
   Part1LeadershipInsightsRoute: typeof Part1LeadershipInsightsRoute
   Part1SchoolContextRoute: typeof Part1SchoolContextRoute
-}
-
-const Part1RouteChildren: Part1RouteChildren = {
-  Part1CommunityDataRoute: Part1CommunityDataRoute,
-  Part1CommunityVoicesRoute: Part1CommunityVoicesRoute,
-  Part1LeadershipInsightsRoute: Part1LeadershipInsightsRoute,
-  Part1SchoolContextRoute: Part1SchoolContextRoute,
-}
-
-const Part1RouteWithChildren = Part1Route._addFileChildren(Part1RouteChildren)
-
-interface Part2RouteChildren {
   Part2PlanningRoute: typeof Part2PlanningRoute
   Part2PlanningSelfAssessmentRoute: typeof Part2PlanningSelfAssessmentRoute
   Part2PracticesD1Route: typeof Part2PracticesD1Route
@@ -411,9 +262,149 @@ interface Part2RouteChildren {
   Part2PracticesSelfAssessmentRoute: typeof Part2PracticesSelfAssessmentRoute
   Part2PurposeRoute: typeof Part2PurposeRoute
   Part2PurposeSelfAssessmentRoute: typeof Part2PurposeSelfAssessmentRoute
+  Part3OverviewRoute: typeof Part3OverviewRoute
+  Part1IndexRoute: typeof Part1IndexRoute
+  Part2IndexRoute: typeof Part2IndexRoute
+  Part3IndexRoute: typeof Part3IndexRoute
 }
 
-const Part2RouteChildren: Part2RouteChildren = {
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-3/': {
+      id: '/part-3/'
+      path: '/part-3'
+      fullPath: '/part-3/'
+      preLoaderRoute: typeof Part3IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-2/': {
+      id: '/part-2/'
+      path: '/part-2'
+      fullPath: '/part-2/'
+      preLoaderRoute: typeof Part2IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-1/': {
+      id: '/part-1/'
+      path: '/part-1'
+      fullPath: '/part-1/'
+      preLoaderRoute: typeof Part1IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-3/overview': {
+      id: '/part-3/overview'
+      path: '/part-3/overview'
+      fullPath: '/part-3/overview'
+      preLoaderRoute: typeof Part3OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-2/purpose-self-assessment': {
+      id: '/part-2/purpose-self-assessment'
+      path: '/part-2/purpose-self-assessment'
+      fullPath: '/part-2/purpose-self-assessment'
+      preLoaderRoute: typeof Part2PurposeSelfAssessmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-2/purpose': {
+      id: '/part-2/purpose'
+      path: '/part-2/purpose'
+      fullPath: '/part-2/purpose'
+      preLoaderRoute: typeof Part2PurposeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-2/practices-self-assessment': {
+      id: '/part-2/practices-self-assessment'
+      path: '/part-2/practices-self-assessment'
+      fullPath: '/part-2/practices-self-assessment'
+      preLoaderRoute: typeof Part2PracticesSelfAssessmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-2/practices-organisation': {
+      id: '/part-2/practices-organisation'
+      path: '/part-2/practices-organisation'
+      fullPath: '/part-2/practices-organisation'
+      preLoaderRoute: typeof Part2PracticesOrganisationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-2/practices-d3': {
+      id: '/part-2/practices-d3'
+      path: '/part-2/practices-d3'
+      fullPath: '/part-2/practices-d3'
+      preLoaderRoute: typeof Part2PracticesD3RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-2/practices-d2': {
+      id: '/part-2/practices-d2'
+      path: '/part-2/practices-d2'
+      fullPath: '/part-2/practices-d2'
+      preLoaderRoute: typeof Part2PracticesD2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-2/practices-d1': {
+      id: '/part-2/practices-d1'
+      path: '/part-2/practices-d1'
+      fullPath: '/part-2/practices-d1'
+      preLoaderRoute: typeof Part2PracticesD1RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-2/planning-self-assessment': {
+      id: '/part-2/planning-self-assessment'
+      path: '/part-2/planning-self-assessment'
+      fullPath: '/part-2/planning-self-assessment'
+      preLoaderRoute: typeof Part2PlanningSelfAssessmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-2/planning': {
+      id: '/part-2/planning'
+      path: '/part-2/planning'
+      fullPath: '/part-2/planning'
+      preLoaderRoute: typeof Part2PlanningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-1/school-context': {
+      id: '/part-1/school-context'
+      path: '/part-1/school-context'
+      fullPath: '/part-1/school-context'
+      preLoaderRoute: typeof Part1SchoolContextRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-1/leadership-insights': {
+      id: '/part-1/leadership-insights'
+      path: '/part-1/leadership-insights'
+      fullPath: '/part-1/leadership-insights'
+      preLoaderRoute: typeof Part1LeadershipInsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-1/community-voices': {
+      id: '/part-1/community-voices'
+      path: '/part-1/community-voices'
+      fullPath: '/part-1/community-voices'
+      preLoaderRoute: typeof Part1CommunityVoicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/part-1/community-data': {
+      id: '/part-1/community-data'
+      path: '/part-1/community-data'
+      fullPath: '/part-1/community-data'
+      preLoaderRoute: typeof Part1CommunityDataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+  }
+}
+
+const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  Part1CommunityDataRoute: Part1CommunityDataRoute,
+  Part1CommunityVoicesRoute: Part1CommunityVoicesRoute,
+  Part1LeadershipInsightsRoute: Part1LeadershipInsightsRoute,
+  Part1SchoolContextRoute: Part1SchoolContextRoute,
   Part2PlanningRoute: Part2PlanningRoute,
   Part2PlanningSelfAssessmentRoute: Part2PlanningSelfAssessmentRoute,
   Part2PracticesD1Route: Part2PracticesD1Route,
@@ -423,36 +414,11 @@ const Part2RouteChildren: Part2RouteChildren = {
   Part2PracticesSelfAssessmentRoute: Part2PracticesSelfAssessmentRoute,
   Part2PurposeRoute: Part2PurposeRoute,
   Part2PurposeSelfAssessmentRoute: Part2PurposeSelfAssessmentRoute,
-}
-
-const Part2RouteWithChildren = Part2Route._addFileChildren(Part2RouteChildren)
-
-interface Part3RouteChildren {
-  Part3OverviewRoute: typeof Part3OverviewRoute
-}
-
-const Part3RouteChildren: Part3RouteChildren = {
   Part3OverviewRoute: Part3OverviewRoute,
-}
-
-const Part3RouteWithChildren = Part3Route._addFileChildren(Part3RouteChildren)
-
-const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  Part1Route: Part1RouteWithChildren,
-  Part2Route: Part2RouteWithChildren,
-  Part3Route: Part3RouteWithChildren,
+  Part1IndexRoute: Part1IndexRoute,
+  Part2IndexRoute: Part2IndexRoute,
+  Part3IndexRoute: Part3IndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
