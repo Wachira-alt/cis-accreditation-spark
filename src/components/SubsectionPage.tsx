@@ -66,7 +66,7 @@ function RotatingHero({ sub }: { sub: Subsection }) {
   }, [images.length]);
 
   return (
-    <div className="relative h-72 overflow-hidden">
+    <div className="relative min-h-[22rem] overflow-hidden">
       <img
         key={current}
         src={images[current]}
