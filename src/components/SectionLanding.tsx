@@ -3,53 +3,51 @@ import { useEffect, useState } from "react";
 import type { Section } from "@/lib/portfolio-data";
 
 const SUBSECTION_IMAGES: Record<string, string> = {
-  "school-context":            "/images/0B8A7198.jpg",
-  "community-voices":          "/images/214A0522.jpg",
-  "community-data":            "/images/472A0933.jpg",
-  "leadership-insights":       "/images/472A1904.jpg",
-  "purpose":                   "/images/1K2A0042.jpg",
-  "purpose-self-assessment":   "/images/1K2A0135.jpg",
-  "practices-organisation":    "/images/203A9261.jpg",
-  "practices-d1":              "/images/DSC_2676.jpg",
-  "practices-d2":              "/images/0B8A7191.jpg",
-  "practices-d3":              "/images/214A0182.jpg",
-  "practices-self-assessment": "/images/214A0522.jpg",
-  "planning":                  "/images/472A9626.jpg",
-  "planning-self-assessment":  "/images/Copy of 472A7025.jpg",
-  "overview":                  "/images/Copy of 472A7079.jpg",
+  "school-context":            "/images/0B8A7198.webp",
+  "community-voices":          "/images/214A0522.webp",
+  "community-data":            "/images/472A0933.webp",
+  "leadership-insights":       "/images/472A1904.webp",
+  "purpose":                   "/images/1K2A0042.webp",
+  "purpose-self-assessment":   "/images/1K2A0135.webp",
+  "practices-organisation":    "/images/203A9261.webp",
+  "practices-d1":              "/images/DSC_2676.webp",
+  "practices-d2":              "/images/0B8A7191.webp",
+  "practices-d3":              "/images/214A0182.webp",
+  "practices-self-assessment": "/images/214A0522.webp",
+  "planning":                  "/images/472A9626.webp",
+  "planning-self-assessment":  "/images/Copy of 472A7025.webp",
+  "overview":                  "/images/Copy of 472A7079.webp",
 };
 
 const HERO_IMAGE_POOLS: Record<string, string[]> = {
   "part-1": [
-    "/images/DSC_2676.jpg",
-    "/images/DSC_2902.jpg",
-    "/images/DSC_3227.jpg",
-    "/images/DSC_9211.jpg",
+    "/images/DSC_2676.webp",
+    "/images/DSC_2902.webp",
+    "/images/DSC_3227.webp",
+    "/images/DSC_9211.webp",
   ],
   "part-2": [
-    "/images/DSC_3101.jpg",
-    "/images/DSC_3220.jpg",
-    "/images/DSC_3454.jpg",
-    "/images/DSC_8996.jpg",
+    "/images/DSC_3101.webp",
+    "/images/DSC_3220.webp",
+    "/images/DSC_3454.webp",
+    "/images/DSC_8996.webp",
   ],
   "part-3": [
-    "/images/DSC_3980.jpg",
-    "/images/DSC_8934.jpg",
-    "/images/DSC_8996.jpg",
-    "/images/DSC_3971.jpg",
+    "/images/DSC_3980.webp",
+    "/images/DSC_8934.webp",
+    "/images/DSC_8996.webp",
+    "/images/DSC_3971.webp",
   ],
 };
 
-// ── Skeleton shimmer for cards while image loads ─────────────────────────────
 function CardSkeleton() {
   return (
     <div className="absolute inset-0 bg-neutral-200 animate-pulse">
-      <div className="absolute inset-0 bg-gradient-to-r from-neutral-200 via-neutral-100 to-neutral-200 animate-[shimmer_1.5s_infinite]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-neutral-200 via-neutral-100 to-neutral-200" />
     </div>
   );
 }
 
-// ── Single subsection card ───────────────────────────────────────────────────
 function SubCard({
   image,
   title,
@@ -76,10 +74,8 @@ function SubCard({
       className="group relative overflow-hidden rounded-sm cursor-pointer transition-all duration-300 hover:-translate-y-1 aspect-[3/2]"
       style={{ animationDelay: `${delay}ms` }}
     >
-      {/* Skeleton — visible until image loads */}
       {!loaded && <CardSkeleton />}
 
-      {/* Image */}
       <img
         src={image}
         alt=""
@@ -88,25 +84,17 @@ function SubCard({
         style={{ opacity: loaded ? 1 : 0, transition: "opacity 400ms ease, transform 500ms ease" }}
       />
 
-      {/* Default gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-300 group-hover:opacity-0" />
-
-      {/* Hover gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-      {/* Section label */}
       <span className="absolute top-4 left-4 font-sans text-[10px] uppercase tracking-[0.2em] text-white bg-brand/90 px-2 py-1 rounded-sm">
         {sectionLabel}
       </span>
 
-      {/* Bottom content */}
       <div className="absolute inset-x-0 bottom-0 p-5">
-        {/* Title — always visible, nudges up on hover */}
         <h3 className="font-serif text-lg text-white leading-snug drop-shadow transition-transform duration-300 group-hover:-translate-y-1">
           {displayTitle}
         </h3>
-
-        {/* Description — slides up and fades in fully on hover, no clamp */}
         <p className="mt-2 text-[13px] text-white/90 leading-relaxed max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out group-hover:max-h-48 group-hover:opacity-100">
           {description}
         </p>
@@ -115,7 +103,6 @@ function SubCard({
   );
 }
 
-// ── Rotating hero ────────────────────────────────────────────────────────────
 function RotatingHero({
   partId,
   number,
@@ -127,7 +114,7 @@ function RotatingHero({
   title: string;
   intro: string;
 }) {
-  const images = HERO_IMAGE_POOLS[partId] ?? ["/images/DSC_2676.jpg"];
+  const images = HERO_IMAGE_POOLS[partId] ?? ["/images/DSC_2676.webp"];
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
   const [current, setCurrent] = useState(0);
   const [prev, setPrev] = useState<number | null>(null);
@@ -159,12 +146,10 @@ function RotatingHero({
 
   return (
     <div className="relative w-full aspect-[21/9] overflow-hidden bg-neutral-300">
-      {/* Hero skeleton — visible until the current image has loaded */}
       {!loadedImages.has(current) && (
         <div className="absolute inset-0 bg-neutral-300 animate-pulse" style={{ zIndex: 0 }} />
       )}
 
-      {/* Current image */}
       <img
         src={images[current]}
         alt=""
@@ -173,7 +158,6 @@ function RotatingHero({
         style={{ zIndex: 0, opacity: loadedImages.has(current) ? 1 : 0, transition: "opacity 400ms ease" }}
       />
 
-      {/* Previous image fading out */}
       {prev !== null && (
         <img
           src={images[prev]}
@@ -212,7 +196,6 @@ function RotatingHero({
   );
 }
 
-// ── Section landing ──────────────────────────────────────────────────────────
 export function SectionLanding({ section }: { section: Section }) {
   const navigate = useNavigate();
 
@@ -225,13 +208,13 @@ export function SectionLanding({ section }: { section: Section }) {
         intro={section.intro}
       />
 
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="max-w-[1600px] mx-auto px-6 py-12">
         <p className="text-xs uppercase tracking-[0.2em] text-foreground/50 mb-6 font-medium">
           Sections in this part
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {section.subsections.map((sub, i) => {
-            const image = SUBSECTION_IMAGES[sub.id] ?? "/images/DSC_2676.jpg";
+            const image = SUBSECTION_IMAGES[sub.id] ?? "/images/DSC_2676.webp";
             const href = `/${section.id}/${sub.id}`;
 
             return (

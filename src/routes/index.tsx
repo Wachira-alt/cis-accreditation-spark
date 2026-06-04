@@ -3,10 +3,10 @@ import { sections } from "@/lib/portfolio-data";
 import { useEffect, useState } from "react";
 
 const OVERVIEW_IMAGES = [
-  "/images/DSC_9211.jpg",
-  "/images/DSC_8996.jpg",
-  "/images/DSC_8934.jpg",
-  "/images/DSC_8738.jpg",
+  "/images/DSC_9211.webp",
+  "/images/DSC_8996.webp",
+  "/images/DSC_8934.webp",
+  "/images/DSC_8738.webp",
 ];
 
 function RotatingHero() {
