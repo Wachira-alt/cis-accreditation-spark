@@ -1,5 +1,87 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { sections } from "@/lib/portfolio-data";
+import { useEffect, useState } from "react";
+
+const OVERVIEW_IMAGES = [
+  "/images/part-1-hero.jpg",
+  "/images/part-2-hero.jpg",
+  "/images/part-3-hero.jpg",
+  "/images/school-context.jpg",
+  "/images/community-voices.jpg",
+  "/images/planning.jpg",
+];
+
+function RotatingHero() {
+  const [current, setCurrent] = useState(0);
+  const [fading, setFading] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFading(true);
+      setTimeout(() => {
+        setCurrent((prev) => (prev + 1) % OVERVIEW_IMAGES.length);
+        setFading(false);
+      }, 600);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="relative h-[420px] overflow-hidden">
+      <img
+        key={current}
+        src={OVERVIEW_IMAGES[current]}
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+        style={{ opacity: fading ? 0 : 1 }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-transparent" />
+      <div className="absolute inset-0 flex flex-col justify-end max-w-4xl mx-auto px-8 pb-12">
+        <p className="text-xs uppercase tracking-[0.22em] text-white/70 font-medium mb-3">
+          CIS International Accreditation
+        </p>
+        <h1 className="font-serif text-5xl text-white leading-tight">
+          Accreditation Portfolio
+        </h1>
+        <p className="mt-4 text-sm text-white/75 max-w-xl leading-relaxed">
+          A collection of reflections and evidence prepared by Woodcreek School
+          for the Council of International Schools.
+        </p>
+        <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-3 text-sm">
+          <div>
+            <dt className="text-xs uppercase tracking-wider text-white/50">School</dt>
+            <dd className="mt-0.5 text-white font-medium">Woodcreek School, Kenya</dd>
+          </div>
+          <div>
+            <dt className="text-xs uppercase tracking-wider text-white/50">Stage</dt>
+            <dd className="mt-0.5 text-white font-medium">Preparatory Engagement</dd>
+          </div>
+          <div>
+            <dt className="text-xs uppercase tracking-wider text-white/50">Visit dates</dt>
+            <dd className="mt-0.5 text-white font-medium">14 – 17 September 2026</dd>
+          </div>
+        </dl>
+      </div>
+      <div className="absolute bottom-4 right-6 flex gap-1.5">
+        {OVERVIEW_IMAGES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => {
+              setFading(true);
+              setTimeout(() => { setCurrent(i); setFading(false); }, 300);
+            }}
+            className="w-1.5 h-1.5 rounded-full transition-all duration-300"
+            style={{
+              backgroundColor: i === current ? "white" : "rgba(255,255,255,0.35)",
+              transform: i === current ? "scale(1.3)" : "scale(1)",
+            }}
+            aria-label={`Image ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -16,37 +98,11 @@ export const Route = createFileRoute("/")({
 });
 
 function Overview() {
+  const navigate = useNavigate();
+
   return (
     <div>
-      <section className="border-b border-rule">
-        <div className="mx-auto max-w-4xl px-6 py-20">
-          <p className="text-xs uppercase tracking-[0.22em] text-brand font-medium">
-            CIS International Accreditation
-          </p>
-          <h1 className="mt-4 font-serif text-5xl leading-tight text-brand">
-            Accreditation Portfolio
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-foreground max-w-2xl">
-            A collection of reflections and evidence prepared by Woodcreek School for the
-            Council of International Schools, organised in three parts following the CIS
-            Portfolio Guide.
-          </p>
-          <dl className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
-            <div>
-              <dt className="uppercase tracking-wider text-xs text-foreground">School</dt>
-              <dd className="mt-1 font-serif text-base text-brand">Woodcreek School, Kenya</dd>
-            </div>
-            <div>
-              <dt className="uppercase tracking-wider text-xs text-foreground">Stage</dt>
-              <dd className="mt-1 font-serif text-base text-brand">Preparatory Engagement</dd>
-            </div>
-            <div>
-              <dt className="uppercase tracking-wider text-xs text-foreground">Visit dates</dt>
-              <dd className="mt-1 font-serif text-base text-brand">14 – 17 September 2026</dd>
-            </div>
-          </dl>
-        </div>
-      </section>
+      <RotatingHero />
 
       <section className="mx-auto max-w-4xl px-6 py-16">
         <h2 className="font-serif text-2xl text-brand">Contents</h2>
@@ -63,14 +119,14 @@ function Overview() {
                   {s.number.replace("Part ", "")}
                 </span>
                 <div className="flex-1">
-                  <Link
-                    to={`/${s.id}`}
-                    className="no-underline hover:no-underline"
+                  <div
+                    onClick={() => navigate({ to: `/${s.id}` as any })}
+                    className="cursor-pointer"
                   >
-                    <h3 className="font-serif text-xl text-brand hover:text-brand transition-colors">
+                    <h3 className="font-serif text-xl text-brand hover:underline transition-colors">
                       {s.title}
                     </h3>
-                  </Link>
+                  </div>
                   <p className="mt-2 text-[15px] leading-relaxed text-foreground max-w-prose">
                     {s.intro}
                   </p>
