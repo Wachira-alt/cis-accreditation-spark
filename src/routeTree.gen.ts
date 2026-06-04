@@ -9,9 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as Part3RouteImport } from './routes/part-3'
-import { Route as Part2RouteImport } from './routes/part-2'
-import { Route as Part1RouteImport } from './routes/part-1'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as Part3OverviewRouteImport } from './routes/part-3/overview'
 import { Route as Part2PurposeSelfAssessmentRouteImport } from './routes/part-2/purpose-self-assessment'
@@ -28,21 +25,6 @@ import { Route as Part1LeadershipInsightsRouteImport } from './routes/part-1/lea
 import { Route as Part1CommunityVoicesRouteImport } from './routes/part-1/community-voices'
 import { Route as Part1CommunityDataRouteImport } from './routes/part-1/community-data'
 
-const Part3Route = Part3RouteImport.update({
-  id: '/part-3',
-  path: '/part-3',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Part2Route = Part2RouteImport.update({
-  id: '/part-2',
-  path: '/part-2',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Part1Route = Part1RouteImport.update({
-  id: '/part-1',
-  path: '/part-1',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -125,9 +107,6 @@ const Part1CommunityDataRoute = Part1CommunityDataRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/part-1': typeof Part1RouteWithChildren
-  '/part-2': typeof Part2RouteWithChildren
-  '/part-3': typeof Part3RouteWithChildren
   '/part-1/community-data': typeof Part1CommunityDataRoute
   '/part-1/community-voices': typeof Part1CommunityVoicesRoute
   '/part-1/leadership-insights': typeof Part1LeadershipInsightsRoute
@@ -145,9 +124,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/part-1': typeof Part1RouteWithChildren
-  '/part-2': typeof Part2RouteWithChildren
-  '/part-3': typeof Part3RouteWithChildren
   '/part-1/community-data': typeof Part1CommunityDataRoute
   '/part-1/community-voices': typeof Part1CommunityVoicesRoute
   '/part-1/leadership-insights': typeof Part1LeadershipInsightsRoute
@@ -166,9 +142,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/part-1': typeof Part1RouteWithChildren
-  '/part-2': typeof Part2RouteWithChildren
-  '/part-3': typeof Part3RouteWithChildren
   '/part-1/community-data': typeof Part1CommunityDataRoute
   '/part-1/community-voices': typeof Part1CommunityVoicesRoute
   '/part-1/leadership-insights': typeof Part1LeadershipInsightsRoute
@@ -188,9 +161,6 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/part-1'
-    | '/part-2'
-    | '/part-3'
     | '/part-1/community-data'
     | '/part-1/community-voices'
     | '/part-1/leadership-insights'
@@ -208,9 +178,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/part-1'
-    | '/part-2'
-    | '/part-3'
     | '/part-1/community-data'
     | '/part-1/community-voices'
     | '/part-1/leadership-insights'
@@ -228,9 +195,6 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/part-1'
-    | '/part-2'
-    | '/part-3'
     | '/part-1/community-data'
     | '/part-1/community-voices'
     | '/part-1/leadership-insights'
@@ -249,34 +213,10 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  Part1Route: typeof Part1RouteWithChildren
-  Part2Route: typeof Part2RouteWithChildren
-  Part3Route: typeof Part3RouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/part-3': {
-      id: '/part-3'
-      path: '/part-3'
-      fullPath: '/part-3'
-      preLoaderRoute: typeof Part3RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/part-2': {
-      id: '/part-2'
-      path: '/part-2'
-      fullPath: '/part-2'
-      preLoaderRoute: typeof Part2RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/part-1': {
-      id: '/part-1'
-      path: '/part-1'
-      fullPath: '/part-1'
-      preLoaderRoute: typeof Part1RouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -385,63 +325,8 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface Part1RouteChildren {
-  Part1CommunityDataRoute: typeof Part1CommunityDataRoute
-  Part1CommunityVoicesRoute: typeof Part1CommunityVoicesRoute
-  Part1LeadershipInsightsRoute: typeof Part1LeadershipInsightsRoute
-  Part1SchoolContextRoute: typeof Part1SchoolContextRoute
-}
-
-const Part1RouteChildren: Part1RouteChildren = {
-  Part1CommunityDataRoute: Part1CommunityDataRoute,
-  Part1CommunityVoicesRoute: Part1CommunityVoicesRoute,
-  Part1LeadershipInsightsRoute: Part1LeadershipInsightsRoute,
-  Part1SchoolContextRoute: Part1SchoolContextRoute,
-}
-
-const Part1RouteWithChildren = Part1Route._addFileChildren(Part1RouteChildren)
-
-interface Part2RouteChildren {
-  Part2PlanningRoute: typeof Part2PlanningRoute
-  Part2PlanningSelfAssessmentRoute: typeof Part2PlanningSelfAssessmentRoute
-  Part2PracticesD1Route: typeof Part2PracticesD1Route
-  Part2PracticesD2Route: typeof Part2PracticesD2Route
-  Part2PracticesD3Route: typeof Part2PracticesD3Route
-  Part2PracticesOrganisationRoute: typeof Part2PracticesOrganisationRoute
-  Part2PracticesSelfAssessmentRoute: typeof Part2PracticesSelfAssessmentRoute
-  Part2PurposeRoute: typeof Part2PurposeRoute
-  Part2PurposeSelfAssessmentRoute: typeof Part2PurposeSelfAssessmentRoute
-}
-
-const Part2RouteChildren: Part2RouteChildren = {
-  Part2PlanningRoute: Part2PlanningRoute,
-  Part2PlanningSelfAssessmentRoute: Part2PlanningSelfAssessmentRoute,
-  Part2PracticesD1Route: Part2PracticesD1Route,
-  Part2PracticesD2Route: Part2PracticesD2Route,
-  Part2PracticesD3Route: Part2PracticesD3Route,
-  Part2PracticesOrganisationRoute: Part2PracticesOrganisationRoute,
-  Part2PracticesSelfAssessmentRoute: Part2PracticesSelfAssessmentRoute,
-  Part2PurposeRoute: Part2PurposeRoute,
-  Part2PurposeSelfAssessmentRoute: Part2PurposeSelfAssessmentRoute,
-}
-
-const Part2RouteWithChildren = Part2Route._addFileChildren(Part2RouteChildren)
-
-interface Part3RouteChildren {
-  Part3OverviewRoute: typeof Part3OverviewRoute
-}
-
-const Part3RouteChildren: Part3RouteChildren = {
-  Part3OverviewRoute: Part3OverviewRoute,
-}
-
-const Part3RouteWithChildren = Part3Route._addFileChildren(Part3RouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  Part1Route: Part1RouteWithChildren,
-  Part2Route: Part2RouteWithChildren,
-  Part3Route: Part3RouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
