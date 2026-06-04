@@ -84,7 +84,7 @@ function RotatingHero({ sub }: { sub: Subsection }) {
             ? sub.title.substring(sub.title.indexOf(".") + 1).trim()
             : sub.title}
         </h1>
-        <p className="mt-3 text-sm text-white/75 max-w-xl leading-relaxed line-clamp-2">
+        <p className="mt-3 text-sm text-white/85 max-w-xl leading-relaxed">
           {sub.description}
         </p>
       </div>
