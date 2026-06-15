@@ -126,11 +126,11 @@
     right: 0;
     width: 65%;
     height: 100%;
-    background-image: url("/tree-watermark.jpeg");
+    background-image: url("./assets/tree-watermark-vibrant.jpg");
     background-size: contain;
     background-position: right top;
     background-repeat: no-repeat;
-    opacity: 0.58;
+    opacity: 0.72;
     z-index: -1;
     pointer-events: none;
   }
