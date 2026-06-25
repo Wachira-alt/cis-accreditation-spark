@@ -130,7 +130,7 @@
     background-size: contain;
     background-position: right top;
     background-repeat: no-repeat;
-    opacity: 0.72;
+    opacity: 0.8;
     z-index: -1;
     pointer-events: none;
   }
