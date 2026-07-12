@@ -38,7 +38,10 @@ export function SiteHeader() {
         </Link>
         <SearchCommand />
       </div>
-      <nav aria-label="Portfolio parts" className="border-t border-rule bg-transparent print:hidden">
+      <nav
+        aria-label="Portfolio parts"
+        className="border-t border-rule bg-transparent print:hidden"
+      >
         <div className="mx-auto max-w-6xl px-4 sm:px-6 flex flex-wrap gap-x-5 sm:gap-x-8 gap-y-0 text-sm">
           {nav.map((item) => (
             <Link

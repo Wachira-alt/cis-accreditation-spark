@@ -13,9 +13,7 @@ import { readFileSync } from "node:fs";
 const strict = process.argv.includes("--strict");
 const src = readFileSync(new URL("../src/lib/portfolio-data.ts", import.meta.url), "utf8");
 
-const hrefs = [...src.matchAll(/href:\s*(?:"([^"]*)"|(P)\b)/g)].map((m) =>
-  m[2] ? "#" : m[1],
-);
+const hrefs = [...src.matchAll(/href:\s*(?:"([^"]*)"|(P)\b)/g)].map((m) => (m[2] ? "#" : m[1]));
 
 let placeholders = 0;
 const errors = [];

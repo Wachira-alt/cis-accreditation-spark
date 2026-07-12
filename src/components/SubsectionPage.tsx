@@ -1,23 +1,32 @@
 import { Link } from "@tanstack/react-router";
 import type { Subsection } from "@/lib/portfolio-data";
 import { RotatingHero } from "@/components/RotatingHero";
+import { EvidenceLinkRow } from "@/components/EvidenceViewer";
 import { getPrevNext } from "@/lib/portfolio-nav";
 
 const SUBSECTION_IMAGE_POOLS: Record<string, string[]> = {
-  "school-context":            ["/images/0B8A7198.webp", "/images/DSC_2676.webp", "/images/DSC_2902.webp"],
-  "community-voices":          ["/images/214A0522.webp", "/images/DSC_3227.webp", "/images/DSC_3733.webp"],
-  "community-data":            ["/images/472A0933.webp", "/images/DSC_2676.webp", "/images/DSC_3227.webp"],
-  "leadership-insights":       ["/images/472A1904.webp", "/images/DSC_2902.webp", "/images/DSC_3733.webp"],
-  "purpose":                   ["/images/1K2A0042.webp", "/images/DSC_3101.webp", "/images/DSC_3220.webp"],
-  "purpose-self-assessment":   ["/images/1K2A0135.webp", "/images/DSC_3454.webp"],
-  "practices-organisation":    ["/images/203A9261.webp", "/images/DSC_3101.webp", "/images/DSC_3642.webp"],
-  "practices-d1":              ["/images/DSC_2676.webp", "/images/DSC_3220.webp", "/images/DSC_3454.webp"],
-  "practices-d2":              ["/images/0B8A7191.webp", "/images/DSC_3642.webp", "/images/DSC_3101.webp"],
-  "practices-d3":              ["/images/214A0182.webp", "/images/DSC_3454.webp", "/images/DSC_3220.webp"],
+  "school-context": ["/images/0B8A7198.webp", "/images/DSC_2676.webp", "/images/DSC_2902.webp"],
+  "community-voices": ["/images/214A0522.webp", "/images/DSC_3227.webp", "/images/DSC_3733.webp"],
+  "community-data": ["/images/472A0933.webp", "/images/DSC_2676.webp", "/images/DSC_3227.webp"],
+  "leadership-insights": [
+    "/images/472A1904.webp",
+    "/images/DSC_2902.webp",
+    "/images/DSC_3733.webp",
+  ],
+  purpose: ["/images/1K2A0042.webp", "/images/DSC_3101.webp", "/images/DSC_3220.webp"],
+  "purpose-self-assessment": ["/images/1K2A0135.webp", "/images/DSC_3454.webp"],
+  "practices-organisation": [
+    "/images/203A9261.webp",
+    "/images/DSC_3101.webp",
+    "/images/DSC_3642.webp",
+  ],
+  "practices-d1": ["/images/DSC_2676.webp", "/images/DSC_3220.webp", "/images/DSC_3454.webp"],
+  "practices-d2": ["/images/0B8A7191.webp", "/images/DSC_3642.webp", "/images/DSC_3101.webp"],
+  "practices-d3": ["/images/214A0182.webp", "/images/DSC_3454.webp", "/images/DSC_3220.webp"],
   "practices-self-assessment": ["/images/214A0522.webp", "/images/DSC_3642.webp"],
-  "planning":                  ["/images/472A9626.webp", "/images/DSC_3101.webp", "/images/DSC_3220.webp"],
-  "planning-self-assessment":  ["/images/Copy of 472A7025.webp", "/images/DSC_3642.webp"],
-  "overview":                  ["/images/Copy of 472A7079.webp", "/images/DSC_3980.webp", "/images/DSC_8934.webp"],
+  planning: ["/images/472A9626.webp", "/images/DSC_3101.webp", "/images/DSC_3220.webp"],
+  "planning-self-assessment": ["/images/Copy of 472A7025.webp", "/images/DSC_3642.webp"],
+  overview: ["/images/Copy of 472A7079.webp", "/images/DSC_3980.webp", "/images/DSC_8934.webp"],
 };
 
 function splitTitle(title: string) {
@@ -68,16 +77,19 @@ export function SubsectionPage({
           >
             <svg
               className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5"
-              fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
               aria-hidden="true"
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
             </svg>
-            <span className="text-[11px] uppercase tracking-[0.18em] font-medium">
-              {backLabel}
-            </span>
+            <span className="text-[11px] uppercase tracking-[0.18em] font-medium">{backLabel}</span>
           </Link>
-          <span className="text-foreground/30 text-sm" aria-hidden="true">·</span>
+          <span className="text-foreground/30 text-sm" aria-hidden="true">
+            ·
+          </span>
           <span className="text-[11px] uppercase tracking-[0.18em] text-foreground/60 font-medium truncate">
             {main}
           </span>
@@ -102,26 +114,9 @@ export function SubsectionPage({
               return (
                 <li key={link.label} className="py-4 flex flex-col gap-1">
                   {placeholder ? (
-                    <span className="text-[14px] text-foreground/60 italic">
-                      {link.label}
-                    </span>
+                    <span className="text-[14px] text-foreground/60 italic">{link.label}</span>
                   ) : (
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${link.label} (opens in a new tab)`}
-                      className="text-[14px] text-brand hover:underline inline-flex items-center gap-1.5 group"
-                    >
-                      {link.label}
-                      <svg
-                        className="w-3 h-3 opacity-40 sm:opacity-0 sm:-translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0"
-                        fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
-                        aria-hidden="true"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                    </a>
+                    <EvidenceLinkRow label={link.label} href={link.href} />
                   )}
                   {link.note && (
                     <span className="text-xs text-foreground/60 leading-snug max-w-prose">

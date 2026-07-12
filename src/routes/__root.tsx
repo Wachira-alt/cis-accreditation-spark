@@ -80,9 +80,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Woodcreek School — CIS Accreditation Portfolio" },
-      { name: "description", content: "Woodcreek School's portfolio for CIS International Accreditation: Learning Community Profile, Cornerstone Expectations, and Learning Stories." },
+      {
+        name: "description",
+        content:
+          "Woodcreek School's portfolio for CIS International Accreditation: Learning Community Profile, Cornerstone Expectations, and Learning Stories.",
+      },
       { property: "og:title", content: "Woodcreek School — CIS Accreditation Portfolio" },
-      { property: "og:description", content: "Portfolio of reflections and evidence for CIS International Accreditation." },
+      {
+        property: "og:description",
+        content: "Portfolio of reflections and evidence for CIS International Accreditation.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:image", content: "https://cis.woodcreekschool.sc.ke/images/DSC_9211.webp" },
       { property: "og:url", content: "https://cis.woodcreekschool.sc.ke/" },

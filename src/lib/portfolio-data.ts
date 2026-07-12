@@ -40,7 +40,6 @@ export const part1: Section = {
   intro:
     "Contextual information about Woodcreek School as a learning community: who we are, the community we serve, the data that describes us, and the perspectives of those who lead our learning community. Prepared in accordance with the CIS Accreditation Portfolio Guide (Part 1, pages 8–15). Shared with CIS 8 weeks before the Preparatory Engagement Visit: 14–17 September 2026.",
   subsections: [
-
     // ── 1A: School Context ──────────────────────────────────────────────────
     // Responsible: Joan (Folder 1) | Accreditation Coordinator: Jairo Obege
     {
@@ -66,12 +65,14 @@ export const part1: Section = {
           note: "Defines school name and any nicknames or abbreviations, English style used (British), governance and leadership group titles (e.g. Senior Leadership Team = SLT; Board of Governors = BoG), grade level or year group naming conventions, and the names of each school section or division.",
         },
         {
-          label: "School history — founding, significant milestones, and authorisation history with any agency",
+          label:
+            "School history — founding, significant milestones, and authorisation history with any agency",
           href: P,
           note: "A brief narrative history of the school covering its founding, key milestones, and any significant changes. Includes a summary of the school's authorisation or accreditation history with all relevant agencies, not limited to CIS.",
         },
         {
-          label: "Summary of actions taken from previous accreditation recommendations (if applicable)",
+          label:
+            "Summary of actions taken from previous accreditation recommendations (if applicable)",
           href: P,
           note: "If Woodcreek has previously been accredited by CIS or another agency, this document summarises the recommendations received and the specific actions the school has taken in response. If this is a first accreditation, this item may be marked not applicable with a brief explanation.",
         },
@@ -81,22 +82,26 @@ export const part1: Section = {
           note: "A visual organisational chart showing the ownership structure (individual, company, or trust), the governance body (Board of Governors or equivalent), and how these relate to the senior leadership of the school. Includes names and roles of key governance and leadership figures.",
         },
         {
-          label: "School divisions overview — age ranges, programmes, and current enrolment per division",
+          label:
+            "School divisions overview — age ranges, programmes, and current enrolment per division",
           href: P,
           note: "A structured overview of each horizontal division of the school (e.g. Early Years, Lower Primary, Upper Primary, Secondary, Sixth Form), including the age range of students in each, the programmes delivered, and current enrolment figures.",
         },
         {
-          label: "Regulatory environment — Kenyan regulatory context, licence to operate (when granted, by which authority, any restrictions on operations)",
+          label:
+            "Regulatory environment — Kenyan regulatory context, licence to operate (when granted, by which authority, any restrictions on operations)",
           href: P,
           note: "An overview of the governmental and regulatory environment in Kenya that governs the school's operations. Specifies when the school was granted its licence to operate, which authority issued it (e.g. Ministry of Education), and any restrictions or conditions attached to that licence. Also covers any special features of the school's locality or county that affect operations.",
         },
         {
-          label: "External compliance requirements — inspections, health and safety, safeguarding, data security",
+          label:
+            "External compliance requirements — inspections, health and safety, safeguarding, data security",
           href: P,
           note: "A summary of all external compliance obligations the school is subject to, including scheduled government inspections, health and safety certifications, safeguarding and child protection requirements under Kenyan law, data security obligations, outsourced service agreements, and any security certifications required.",
         },
         {
-          label: "Embassy and diplomatic relationships — formal relationships with missions operating in Kenya (if applicable)",
+          label:
+            "Embassy and diplomatic relationships — formal relationships with missions operating in Kenya (if applicable)",
           href: P,
           note: "Documents any formal relationships between Woodcreek School and embassies or diplomatic missions based in Kenya that result in enrolment agreements, fee arrangements, or operational obligations. If no such formal relationships exist, a brief written statement to that effect satisfies this requirement.",
         },
@@ -167,12 +172,14 @@ export const part1: Section = {
           note: "Student admissions and attrition data covering the last three academic years. Enrolment data should show number of applications, acceptances, and students who enrolled, broken down by school division. Inclusion data should show any admissions related to students with specific learning needs. Attrition data should show total students who left, with reasons (relocation, financial, illness, not invited to re-enrol, other). Trends should be highlighted with brief contextual notes.",
         },
         {
-          label: "C.2b Holistic learner data — academic achievement, holistic achievement, well-being",
+          label:
+            "C.2b Holistic learner data — academic achievement, holistic achievement, well-being",
           href: P,
           note: "Learner data for the last three years across three categories. Academic achievement: results from external assessments such as IGCSE, A Level, Cambridge Checkpoint, MAP, ISA, or equivalent standardised tests. Holistic achievement: participation and recognition in sport, the arts, technology, debate, service learning, environmental initiatives, or similar. Well-being: trends in data related to student conduct, pastoral referrals, personal or mental health support, and social-emotional development.",
         },
         {
-          label: "C.3a Educator data — anonymised staff profile, qualifications, and retention (last three years)",
+          label:
+            "C.3a Educator data — anonymised staff profile, qualifications, and retention (last three years)",
           href: P,
           note: "Anonymised data for all teaching and administration staff over the last three years. Includes role, relevant qualifications, and length of service for each staff member. Also includes the number of staff who left, with reasons for departure categorised as: relocation, personal or family reasons, not retained by the school, or other. All identifying information must be removed.",
         },
@@ -187,7 +194,8 @@ export const part1: Section = {
           note: "An explanation of how Woodcreek systematically collects community perception data, including the tools used, frequency, and how results are analysed and fed back to the community. Includes one or two recent examples of community perception data collected to understand school climate, community satisfaction, or other relevant indicators.",
         },
         {
-          label: "C.4b CIS Community Survey — administration overview, gap analysis, strengths, opportunities, and action plan",
+          label:
+            "C.4b CIS Community Survey — administration overview, gap analysis, strengths, opportunities, and action plan",
           href: P,
           note: "Required for schools with a Preparatory Engagement Visit in July 2026 or later (Woodcreek's PEV is September 2026, so this is required). Provides a full analysis of the CIS Community Survey results covering five areas: (1) overview of how the survey was administered (tools, response rates, timeframes, any language adaptations); (2) gap analysis identifying differences in perceptions between community groups; (3) significant strengths identified, referenced to relevant CIS standards or Cornerstone Expectations; (4) opportunities for improvement, referenced to standards; (5) actions already taken or planned, and insights relevant to potential Development Initiatives for the self-study.",
         },
@@ -232,7 +240,6 @@ export const part2: Section = {
   intro:
     "Evidence of Woodcreek School's alignment with the three CIS Cornerstone Expectations — Purpose, Practices, and Planning. Each Cornerstone is accompanied by a current status statement (chosen from the CIS fixed menu for both Documentation and Implementation) and a 150-word self-assessment narrative as required by the CIS Portfolio Guide (pages 17–21).",
   subsections: [
-
     // ── PURPOSE ─────────────────────────────────────────────────────────────
     // Responsible: Jairo Obege and Oliver Omotto (Folder 8)
     {
@@ -280,7 +287,8 @@ export const part2: Section = {
         "The Head of School's self-assessment of Woodcreek's current alignment with the Purpose Cornerstone. Requires two current status statements chosen from the CIS fixed menu — one for Documentation and one for Implementation — followed by a reflective narrative of no more than 150 words identifying significant strengths and areas for further development in the school's documentation and implementation of its purpose and guiding principles. Documentation options: 'Robust, coherent, and regularly reviewed' / 'Clear and relevant with room for development' / 'Currently in active development' / 'Not yet sufficiently developed'. Implementation options: 'Deeply embedded for impact' / 'Widely implemented with room for improvement' / 'Inconsistently implemented' / 'Not yet sufficiently evidenced'.",
       links: [
         {
-          label: "Purpose self-assessment narrative (max 150 words) — strengths and areas for development",
+          label:
+            "Purpose self-assessment narrative (max 150 words) — strengths and areas for development",
           href: P,
           note: "A concise written reflection (maximum 150 words) that: (1) states the chosen Documentation status and Implementation status from the CIS fixed menus; (2) identifies significant strengths in the school's documentation and implementation of the Purpose Cornerstone; and (3) identifies significant areas for further development. Plain language, written for evaluators who may not be native English speakers.",
         },
@@ -302,7 +310,8 @@ export const part2: Section = {
           note: "A clear visual chart describing the full governance and leadership structure of Woodcreek School. Shows the relationship between the ownership, governing body, Head of School, senior leadership, middle leadership, and other key roles. Should be current and governance-approved.",
         },
         {
-          label: "C2 Role profiles / job descriptions — key governance, leadership, pastoral, and educational roles",
+          label:
+            "C2 Role profiles / job descriptions — key governance, leadership, pastoral, and educational roles",
           href: P,
           note: "Defined and documented role profiles or job descriptions for all key roles at Woodcreek, including governance roles (e.g. Chair of Governors), leadership roles (e.g. Head of School, Deputy Head, Heads of Department), pastoral roles (e.g. Head of Year, Form Tutor), and core educational roles (e.g. class teacher, learning support coordinator). Each profile should clearly describe responsibilities, reporting lines, and required qualifications.",
         },
@@ -312,7 +321,8 @@ export const part2: Section = {
           note: "A complete anonymised list of all staff currently employed at Woodcreek School, showing each person's role, relevant qualifications, and length of service. All personally identifying information (names, ID numbers) must be removed before sharing with CIS evaluators.",
         },
         {
-          label: "C4 Human resources documentation — safer recruitment policy and sample staff contract",
+          label:
+            "C4 Human resources documentation — safer recruitment policy and sample staff contract",
           href: P,
           note: "HR documentation covering two areas: (1) the school's safer recruitment policy and associated procedures, demonstrating that Woodcreek follows safe hiring practices including background checks and reference verification; and (2) a sample staff employment contract (anonymised or redacted) showing the standard terms and conditions under which staff are employed.",
         },
@@ -327,7 +337,8 @@ export const part2: Section = {
           note: "The school's established communication agreements for all three groups: staff (e.g. staff communication protocols, meeting structures, response time expectations), parents (e.g. home-school communication policy, parent portal guidelines, response expectations), and students (e.g. student communication norms, acceptable use of digital tools). These agreements ensure communication across the school is guided, consistent, and ethical.",
         },
         {
-          label: "D1 Governance by-laws and statutes — board composition, succession planning, governance self-evaluation, and Head of School evaluation",
+          label:
+            "D1 Governance by-laws and statutes — board composition, succession planning, governance self-evaluation, and Head of School evaluation",
           href: P,
           note: "All governance-level by-laws, statutes, or policy documents covering: the composition of the governing body (how members are appointed, terms of service, quorum requirements); succession planning for governance and leadership roles; the process by which the governing body evaluates its own effectiveness; and the process by which the governing body evaluates the performance of the Head of School.",
         },
@@ -413,12 +424,14 @@ export const part2: Section = {
           note: "An overview of the digital platforms, management information systems, and technologies used to support whole-school operations — such as the student information system, finance system, communication platform, and HR system. Should indicate which systems are in use, their purpose, and any planned changes or upgrades.",
         },
         {
-          label: "Staff handbook — operational procedures for whole-school guiding principle systems",
+          label:
+            "Staff handbook — operational procedures for whole-school guiding principle systems",
           href: P,
           note: "The operational procedures layer that supports Dimension 1 policies in practice. The staff handbook (or equivalent operational guide) translates governance-approved policies into day-to-day procedures for staff — covering how policies are implemented, who is responsible, and what staff are expected to do in specific situations. This is the 'how we do things here' document that sits alongside the 'what we expect' policy documents.",
         },
         {
-          label: "Governance by-laws and statutes — see Practices: Organisation of People and Staffing (D1)",
+          label:
+            "Governance by-laws and statutes — see Practices: Organisation of People and Staffing (D1)",
           href: P,
           note: "Cross-reference only. The primary evidence for governance by-laws and statutes is filed under Practices — Organisation of People and Staffing (D1). This entry ensures evaluators reviewing Dimension 1 can locate that evidence without it needing to be duplicated.",
         },
@@ -454,7 +467,8 @@ export const part2: Section = {
           note: "The governance-approved policy setting out the school's approach to digital citizenship education and online safety for students and staff. Should cover acceptable use of devices and the internet, social media guidelines, cyberbullying, age-appropriate content filters, and how the school educates the community about responsible digital behaviour.",
         },
         {
-          label: "Facilities management policy — including lab safety, document storage, and examination storage",
+          label:
+            "Facilities management policy — including lab safety, document storage, and examination storage",
           href: P,
           note: "The policy governing the day-to-day management and maintenance of school facilities. For schools with science laboratories, this includes laboratory safety procedures. Also covers secure document storage (student records, HR files) and secure examination storage and invigilation procedures, as required by CIS for schools running external examinations such as IGCSE or A Level.",
         },
@@ -484,7 +498,8 @@ export const part2: Section = {
           note: "The governance-approved policy setting out Woodcreek's commitment to environmental sustainability and responsible stewardship of resources. Should cover energy and water use, waste reduction, procurement decisions, curriculum links to sustainability, and any whole-school sustainability initiatives or targets.",
         },
         {
-          label: "Appropriate and ethical use of technology policy — including artificial intelligence",
+          label:
+            "Appropriate and ethical use of technology policy — including artificial intelligence",
           href: P,
           note: "The governance-approved policy covering the appropriate and ethical use of technology across the school community — including students, staff, and governors. Specifically addresses the use of artificial intelligence tools (generative AI, AI-assisted assessment, data analytics) in line with the school's academic integrity commitments and data protection obligations.",
         },
@@ -499,7 +514,8 @@ export const part2: Section = {
           note: "An overview of the platforms, tools, and technologies used to support well-being across the school — such as student well-being tracking tools, mental health referral systems, counselling management platforms, or anonymous reporting tools. Should indicate current systems in use and any planned developments.",
         },
         {
-          label: "Well-being operational procedures — e.g. pastoral care handbook or student support manual",
+          label:
+            "Well-being operational procedures — e.g. pastoral care handbook or student support manual",
           href: P,
           note: "The operational procedures document that translates Dimension 2 policies into day-to-day practice for staff. This may be a pastoral care handbook, student support manual, or equivalent. Describes how staff implement well-being policies — covering specific procedures for common situations such as a student disclosing a concern, a mental health referral, a behavioural incident, or an emergency.",
         },
@@ -590,7 +606,8 @@ export const part2: Section = {
           note: "An overview of the digital platforms, learning management systems, and educational technologies used to support learning and teaching at Woodcreek — such as the LMS, assessment platforms, student portfolios, or adaptive learning tools. Should indicate current systems in use, how they are integrated into teaching and learning, and any planned developments.",
         },
         {
-          label: "Learning and teaching operational procedures — e.g. teacher handbook or curriculum guidelines manual",
+          label:
+            "Learning and teaching operational procedures — e.g. teacher handbook or curriculum guidelines manual",
           href: P,
           note: "The operational procedures document that translates Dimension 3 policies into day-to-day practice for teaching staff. This may be a teacher handbook, curriculum guidelines manual, or equivalent. Describes specific procedures for lesson planning, assessment and feedback, reporting to parents, managing learning support in the classroom, and other routine teaching and learning processes.",
         },
@@ -666,7 +683,8 @@ export const part2: Section = {
           note: "RESTRICTED — shared with CIS IAA and IAC only. The documented operational procedures for financial management at Woodcreek, showing how the board's financial policy is implemented in practice. Covers day-to-day financial processes such as budgeting, purchasing, payroll, banking, and financial reporting.",
         },
         {
-          label: "F3 Medium-to-long-term financial projections aligned with strategic plan — RESTRICTED",
+          label:
+            "F3 Medium-to-long-term financial projections aligned with strategic plan — RESTRICTED",
           href: P,
           note: "RESTRICTED — shared with CIS IAA and IAC only. Financial projections or forecasts covering the medium to long term (typically three to five years), showing how Woodcreek's financial position is expected to develop in line with its strategic plan. Should demonstrate that the school is financially sustainable and that strategic investments are affordable.",
         },
@@ -676,7 +694,8 @@ export const part2: Section = {
           note: "RESTRICTED — shared with CIS IAA and IAC only. The school's risk management policy and associated processes, covering how Woodcreek identifies, assesses, and mitigates financial and operational risks. May include a risk register, contingency funding arrangements, insurance coverage summary, and the school's approach to crisis and business continuity planning.",
         },
         {
-          label: "F5 SWOT analysis — or equivalent contextual analysis of school stability — RESTRICTED",
+          label:
+            "F5 SWOT analysis — or equivalent contextual analysis of school stability — RESTRICTED",
           href: P,
           note: "RESTRICTED — shared with CIS IAA and IAC only. A current SWOT analysis (Strengths, Weaknesses, Opportunities, Threats) or equivalent contextual analysis of the school's overall stability and outlook. Should be recent and honest, reflecting the school's actual position. Used by CIS to assess the long-term viability and sustainability of the school.",
         },
@@ -698,7 +717,8 @@ export const part2: Section = {
         "The Head of School's self-assessment of Woodcreek's current alignment with the Planning Cornerstone. Requires two current status statements chosen from the CIS fixed menu — one for Documentation and one for Implementation — followed by a reflective narrative of no more than 150 words identifying significant strengths and areas for further development in the school's systems for strategic and sustainable future planning. Documentation options: 'Robust, coherent, and regularly reviewed' / 'Clear and relevant with room for development' / 'Currently in active development' / 'Not yet sufficiently developed'. Implementation options: 'Deeply embedded for impact' / 'Widely implemented with room for improvement' / 'Inconsistently implemented' / 'Not yet sufficiently evidenced'.",
       links: [
         {
-          label: "Planning self-assessment narrative (max 150 words) — strengths and areas for development",
+          label:
+            "Planning self-assessment narrative (max 150 words) — strengths and areas for development",
           href: P,
           note: "A concise written reflection (maximum 150 words) that: (1) states the chosen Documentation status and Implementation status from the CIS fixed menus; (2) identifies significant strengths in the school's documentation and implementation of the Planning Cornerstone — covering strategic planning, financial sustainability, and data-driven review processes; and (3) identifies significant areas for further development.",
         },

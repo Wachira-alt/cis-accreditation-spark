@@ -39,8 +39,8 @@ function Overview() {
             Accreditation Portfolio
           </h1>
           <p className="mt-4 text-sm text-white/85 max-w-xl leading-relaxed">
-            A collection of reflections and evidence prepared by Woodcreek School
-            for the Council of International Schools.
+            A collection of reflections and evidence prepared by Woodcreek School for the Council of
+            International Schools.
           </p>
           <dl className="mt-6 sm:mt-8 flex flex-wrap gap-x-10 gap-y-3 text-sm">
             <div>
@@ -62,8 +62,8 @@ function Overview() {
       <section className="mx-auto max-w-4xl px-6 py-12 sm:py-16">
         <h2 className="font-serif text-2xl text-brand">Contents</h2>
         <p className="mt-2 text-[15px] text-foreground max-w-prose">
-          Each part below contains short reflections together with hyperlinks to the
-          underlying evidence held in our document repository.
+          Each part below contains short reflections together with hyperlinks to the underlying
+          evidence held in our document repository.
         </p>
 
         <ol className="mt-10 space-y-8">
@@ -74,13 +74,8 @@ function Overview() {
                   {s.number.replace("Part ", "")}
                 </span>
                 <div className="flex-1">
-                  <Link
-                    to={`/${s.id}` as never}
-                    className="no-underline hover:no-underline"
-                  >
-                    <h3 className="font-serif text-xl text-brand hover:underline">
-                      {s.title}
-                    </h3>
+                  <Link to={`/${s.id}` as never} className="no-underline hover:no-underline">
+                    <h3 className="font-serif text-xl text-brand hover:underline">{s.title}</h3>
                   </Link>
                   <p className="mt-2 text-[15px] leading-relaxed text-foreground max-w-prose">
                     {s.intro}

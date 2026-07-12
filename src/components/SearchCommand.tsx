@@ -80,11 +80,7 @@ export function SearchCommand() {
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Portfolio sections">
             {pageEntries.map((entry) => (
-              <CommandItem
-                key={entry.path}
-                value={entry.value}
-                onSelect={() => go(entry.path)}
-              >
+              <CommandItem key={entry.path} value={entry.value} onSelect={() => go(entry.path)}>
                 <div className="flex flex-col">
                   <span>{entry.label}</span>
                   {entry.detail && (

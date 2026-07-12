@@ -4,20 +4,20 @@ import type { Section } from "@/lib/portfolio-data";
 import { RotatingHero } from "@/components/RotatingHero";
 
 const SUBSECTION_IMAGES: Record<string, string> = {
-  "school-context":            "/images/0B8A7198.webp",
-  "community-voices":          "/images/214A0522.webp",
-  "community-data":            "/images/472A0933.webp",
-  "leadership-insights":       "/images/472A1904.webp",
-  "purpose":                   "/images/1K2A0042.webp",
-  "purpose-self-assessment":   "/images/1K2A0135.webp",
-  "practices-organisation":    "/images/203A9261.webp",
-  "practices-d1":              "/images/DSC_2676.webp",
-  "practices-d2":              "/images/0B8A7191.webp",
-  "practices-d3":              "/images/214A0182.webp",
+  "school-context": "/images/0B8A7198.webp",
+  "community-voices": "/images/214A0522.webp",
+  "community-data": "/images/472A0933.webp",
+  "leadership-insights": "/images/472A1904.webp",
+  purpose: "/images/1K2A0042.webp",
+  "purpose-self-assessment": "/images/1K2A0135.webp",
+  "practices-organisation": "/images/203A9261.webp",
+  "practices-d1": "/images/DSC_2676.webp",
+  "practices-d2": "/images/0B8A7191.webp",
+  "practices-d3": "/images/214A0182.webp",
   "practices-self-assessment": "/images/214A0522.webp",
-  "planning":                  "/images/472A9626.webp",
-  "planning-self-assessment":  "/images/Copy of 472A7025.webp",
-  "overview":                  "/images/Copy of 472A7079.webp",
+  planning: "/images/472A9626.webp",
+  "planning-self-assessment": "/images/Copy of 472A7025.webp",
+  overview: "/images/Copy of 472A7079.webp",
 };
 
 const HERO_IMAGE_POOLS: Record<string, string[]> = {
@@ -62,9 +62,7 @@ function SubCard({
 }) {
   const [loaded, setLoaded] = useState(false);
 
-  const displayTitle = title.includes(".")
-    ? title.substring(title.indexOf(".") + 1).trim()
-    : title;
+  const displayTitle = title.includes(".") ? title.substring(title.indexOf(".") + 1).trim() : title;
   const sectionLabel = title.split(".")[0].trim();
 
   return (
@@ -92,9 +90,7 @@ function SubCard({
       </span>
 
       <div className="absolute inset-x-0 bottom-0 p-5">
-        <h3 className="font-serif text-lg text-white leading-snug drop-shadow">
-          {displayTitle}
-        </h3>
+        <h3 className="font-serif text-lg text-white leading-snug drop-shadow">{displayTitle}</h3>
         <p className="mt-2 text-[13px] text-white/85 leading-relaxed line-clamp-2 sm:line-clamp-3">
           {description}
         </p>
