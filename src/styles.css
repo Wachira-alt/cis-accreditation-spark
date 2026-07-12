@@ -150,6 +150,36 @@
 
   a:hover {
     text-decoration: underline;
-     color: #800000;  
+     color: #800000;
+  }
+}
+
+/* ── Print: evaluators print sections; keep them clean and ink-friendly ── */
+@media print {
+  body::before {
+    display: none; /* watermark */
+  }
+
+  header nav,
+  footer {
+    display: none !important;
+  }
+
+  main {
+    padding: 0;
+  }
+
+  a {
+    color: #1a1a1a;
+    text-decoration: underline;
+  }
+
+  h1, h2, h3, h4 {
+    color: #7b1f24;
+    break-after: avoid;
+  }
+
+  li {
+    break-inside: avoid;
   }
 }

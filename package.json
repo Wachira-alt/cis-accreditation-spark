@@ -9,7 +9,9 @@
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "check:links": "node scripts/check-links.mjs",
+    "check:links:strict": "node scripts/check-links.mjs --strict"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",

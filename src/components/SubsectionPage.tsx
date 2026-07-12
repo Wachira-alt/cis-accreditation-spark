@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import type { Subsection } from "@/lib/portfolio-data";
+import { RotatingHero } from "@/components/RotatingHero";
+import { getPrevNext } from "@/lib/portfolio-nav";
 
 const SUBSECTION_IMAGE_POOLS: Record<string, string[]> = {
   "school-context":            ["/images/0B8A7198.webp", "/images/DSC_2676.webp", "/images/DSC_2902.webp"],
@@ -19,90 +20,12 @@ const SUBSECTION_IMAGE_POOLS: Record<string, string[]> = {
   "overview":                  ["/images/Copy of 472A7079.webp", "/images/DSC_3980.webp", "/images/DSC_8934.webp"],
 };
 
-function RotatingHero({ sub }: { sub: Subsection }) {
-  const images = SUBSECTION_IMAGE_POOLS[sub.id] ?? ["/images/DSC_2676.webp"];
-  const [current, setCurrent] = useState(0);
-  const [prev, setPrev] = useState<number | null>(null);
-  const [fading, setFading] = useState(false);
-
-  function goTo(i: number) {
-    if (i === current || fading) return;
-    setPrev(current);
-    setFading(false);
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        setCurrent(i);
-        setFading(true);
-        setTimeout(() => {
-          setPrev(null);
-          setFading(false);
-        }, 1000);
-      });
-    });
-  }
-
-  useEffect(() => {
-    if (images.length <= 1) return;
-    const interval = setInterval(() => {
-      goTo((current + 1) % images.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [current, fading, images.length]);
-
-  return (
-    <div className="relative w-full aspect-[16/9] overflow-hidden bg-neutral-900">
-      <img
-        src={images[current]}
-        alt=""
-        className="absolute inset-0 w-full h-full object-cover object-center"
-        style={{ zIndex: 0 }}
-      />
-      {prev !== null && (
-        <img
-          src={images[prev]}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000"
-          style={{ opacity: fading ? 0 : 1, zIndex: 1 }}
-        />
-      )}
-      <div
-        className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-transparent"
-        style={{ zIndex: 2 }}
-      />
-      <div
-        className="absolute inset-0 flex flex-col justify-end max-w-4xl mx-auto px-8 pb-12"
-        style={{ zIndex: 3 }}
-      >
-        <p className="text-xs uppercase tracking-[0.22em] text-white/70 font-medium mb-2">
-          {sub.title.split(".")[0].trim()}
-        </p>
-        <h1 className="font-serif text-4xl text-white leading-tight">
-          {sub.title.includes(".")
-            ? sub.title.substring(sub.title.indexOf(".") + 1).trim()
-            : sub.title}
-        </h1>
-        <p className="mt-4 text-sm text-white/75 max-w-xl leading-relaxed">
-          {sub.description}
-        </p>
-      </div>
-      {images.length > 1 && (
-        <div className="absolute bottom-4 right-6 flex gap-1.5" style={{ zIndex: 3 }}>
-          {images.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              className="w-1.5 h-1.5 rounded-full transition-all duration-300"
-              style={{
-                backgroundColor: i === current ? "white" : "rgba(255,255,255,0.35)",
-                transform: i === current ? "scale(1.3)" : "scale(1)",
-              }}
-              aria-label={`Image ${i + 1}`}
-            />
-          ))}
-        </div>
-      )}
-    </div>
-  );
+function splitTitle(title: string) {
+  if (!title.includes(".")) return { label: "", main: title };
+  return {
+    label: title.split(".")[0].trim(),
+    main: title.substring(title.indexOf(".") + 1).trim(),
+  };
 }
 
 export function SubsectionPage({
@@ -114,20 +37,39 @@ export function SubsectionPage({
   backTo: string;
   backLabel: string;
 }) {
+  const { label, main } = splitTitle(sub.title);
+  const { prev, next } = getPrevNext(sub.id);
+
   return (
     <div>
-      <RotatingHero sub={sub} />
+      <RotatingHero
+        images={SUBSECTION_IMAGE_POOLS[sub.id] ?? ["/images/DSC_2676.webp"]}
+        aspect="aspect-[16/9] sm:aspect-[21/9]"
+      >
+        <div className="flex h-full flex-col justify-end max-w-4xl mx-auto px-6 sm:px-8 pb-10 sm:pb-12">
+          {label && (
+            <p className="text-xs uppercase tracking-[0.22em] text-white/80 font-medium mb-2">
+              {label}
+            </p>
+          )}
+          <h1 className="font-serif text-3xl sm:text-4xl text-white leading-tight">{main}</h1>
+          <p className="mt-4 text-sm text-white/85 max-w-xl leading-relaxed hidden sm:block">
+            {sub.description}
+          </p>
+        </div>
+      </RotatingHero>
 
       {/* Sticky bar — stays at top as you scroll */}
-      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-rule">
-        <div className="max-w-4xl mx-auto px-8 py-3 flex items-center gap-3">
+      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-rule print:hidden">
+        <div className="max-w-4xl mx-auto px-4 sm:px-8 py-3 flex items-center gap-3">
           <Link
-            to={backTo as any}
-            className="inline-flex items-center gap-2 text-brand hover:text-[#800000] no-underline hover:no-underline transition-colors duration-150 group"
+            to={backTo as never}
+            className="inline-flex items-center gap-2 text-brand hover:text-[#800000] no-underline hover:no-underline transition-colors duration-150 group shrink-0"
           >
             <svg
               className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5"
               fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+              aria-hidden="true"
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
             </svg>
@@ -135,16 +77,24 @@ export function SubsectionPage({
               {backLabel}
             </span>
           </Link>
-          <span className="text-foreground/20 text-sm">·</span>
-          <span className="text-[11px] uppercase tracking-[0.18em] text-foreground/40 font-medium truncate">
-            {sub.title.includes(".")
-              ? sub.title.substring(sub.title.indexOf(".") + 1).trim()
-              : sub.title}
+          <span className="text-foreground/30 text-sm" aria-hidden="true">·</span>
+          <span className="text-[11px] uppercase tracking-[0.18em] text-foreground/60 font-medium truncate">
+            {main}
           </span>
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-8 py-10 pb-32">
+      {/* Description in the document flow for mobile readers (hero copy is hidden there) */}
+      <p className="sm:hidden max-w-4xl mx-auto px-6 pt-6 text-[15px] leading-relaxed text-foreground">
+        {sub.description}
+      </p>
+
+      <div className="max-w-4xl mx-auto px-6 sm:px-8 py-8 sm:py-10">
+        {sub.updated && (
+          <p className="mb-4 text-[11px] uppercase tracking-[0.18em] text-foreground/60">
+            Last updated · {sub.updated}
+          </p>
+        )}
         {sub.links.length > 0 ? (
           <ul className="divide-y divide-rule border-t border-b border-rule">
             {sub.links.map((link) => {
@@ -152,7 +102,7 @@ export function SubsectionPage({
               return (
                 <li key={link.label} className="py-4 flex flex-col gap-1">
                   {placeholder ? (
-                    <span className="text-[14px] text-foreground/40 italic">
+                    <span className="text-[14px] text-foreground/60 italic">
                       {link.label}
                     </span>
                   ) : (
@@ -160,19 +110,21 @@ export function SubsectionPage({
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`${link.label} (opens in a new tab)`}
                       className="text-[14px] text-brand hover:underline inline-flex items-center gap-1.5 group"
                     >
                       {link.label}
                       <svg
-                        className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
+                        className="w-3 h-3 opacity-40 sm:opacity-0 sm:-translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0"
                         fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+                        aria-hidden="true"
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
                     </a>
                   )}
                   {link.note && (
-                    <span className="text-xs text-foreground/35 leading-snug max-w-prose">
+                    <span className="text-xs text-foreground/60 leading-snug max-w-prose">
                       {link.note}
                     </span>
                   )}
@@ -181,10 +133,47 @@ export function SubsectionPage({
             })}
           </ul>
         ) : (
-          <p className="text-sm italic text-foreground/40">
+          <p className="text-sm italic text-foreground/60">
             Content for this section will be added during the self-study.
           </p>
         )}
+
+        {/* Prev / next — evaluators read the portfolio linearly */}
+        <nav
+          aria-label="Portfolio navigation"
+          className="mt-12 pt-6 border-t border-rule flex flex-col sm:flex-row justify-between gap-4 print:hidden"
+        >
+          {prev ? (
+            <Link
+              to={prev.path as never}
+              className="group no-underline hover:no-underline max-w-[48%]"
+            >
+              <span className="block text-[10px] uppercase tracking-[0.18em] text-foreground/60">
+                ← Previous · {prev.partNumber}
+              </span>
+              <span className="mt-1 block text-sm text-brand group-hover:underline">
+                {prev.title}
+              </span>
+            </Link>
+          ) : (
+            <span />
+          )}
+          {next ? (
+            <Link
+              to={next.path as never}
+              className="group no-underline hover:no-underline sm:text-right sm:ml-auto max-w-[48%]"
+            >
+              <span className="block text-[10px] uppercase tracking-[0.18em] text-foreground/60">
+                Next · {next.partNumber} →
+              </span>
+              <span className="mt-1 block text-sm text-brand group-hover:underline">
+                {next.title}
+              </span>
+            </Link>
+          ) : (
+            <span />
+          )}
+        </nav>
       </div>
     </div>
   );

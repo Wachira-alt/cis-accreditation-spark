@@ -13,6 +13,8 @@ export type Subsection = {
   id: string;
   title: string;
   description: string;
+  /** Shown as "Last updated" on the subsection page; the CIS guide asks for update dates. */
+  updated?: string;
   links: EvidenceLink[];
 };
 
@@ -43,6 +45,7 @@ export const part1: Section = {
     // Responsible: Joan (Folder 1) | Accreditation Coordinator: Jairo Obege
     {
       id: "school-context",
+      updated: "July 2026",
       title: "A. School Context",
       description:
         "Key contextual information that orients CIS visitors to Woodcreek School before the Preparatory Engagement Visit. Presented as clearly and visually as possible, with descriptive text kept to a minimum. Covers the school's basic profile, learning programmes, a glossary of school-specific language, history and authorisation background, governance and ownership structure, and the regulatory environment in which the school operates in Kenya.",
@@ -106,6 +109,7 @@ export const part1: Section = {
     // Parental consent required before recording EY and KS1 children.
     {
       id: "community-voices",
+      updated: "July 2026",
       title: "B. Community Voices Showcase",
       description:
         "A creative showcase of Woodcreek's guiding principles through the authentic voices of each community group. The purpose is to demonstrate how the school's guiding principles are lived and felt by the people within the community, and to give CIS evaluators a genuine sense of the school's unique identity and culture. Each artefact should be original and meaningful — videos, images, artwork, audio recordings, or written reflections are all welcome. One artefact per community group; maximum three minutes for video or audio, or one page for written submissions. Parental consent must be obtained before recording Early Years and Key Stage 1 children.",
@@ -147,6 +151,7 @@ export const part1: Section = {
     // Responsible: Nicole / Dennis (Folder 3); Linet (Folder 4); HR Team (Folder 5); Nicole (Folder 6)
     {
       id: "community-data",
+      updated: "July 2026",
       title: "C. Community Data",
       description:
         "Data samples describing the Woodcreek learning community across four categories: the school's approach to data collection, learner data, human resources data, and community perception data including the CIS Community Survey. All data is anonymised in line with CIS data protection expectations. Where data shows a trend, the school provides brief contextual commentary to help evaluators interpret it accurately. Key data is presented visually where possible (graphs, charts) rather than as raw tables.",
@@ -194,6 +199,7 @@ export const part1: Section = {
     // Max 300 words or equivalent multimedia format with transcript
     {
       id: "leadership-insights",
+      updated: "July 2026",
       title: "D. Leadership Insights",
       description:
         "A reflective response from Woodcreek School's leadership on the aims, hopes, and challenges of the upcoming CIS accreditation journey. Responds to five specific CIS reflection questions covering the school's goals for the process, how accreditation is expected to impact the community, anticipated challenges, hoped-for benefits, and what the school hopes to learn. Maximum 300 words, or an equivalent multimedia format (e.g. a recorded video, a recorded leadership conversation, or a slide deck) with a written transcript.",
@@ -231,6 +237,7 @@ export const part2: Section = {
     // Responsible: Jairo Obege and Oliver Omotto (Folder 8)
     {
       id: "purpose",
+      updated: "July 2026",
       title: "1. Purpose",
       description:
         "Evidence that Woodcreek School has clearly stated its purpose (why it exists) and its guiding principles (its main values and beliefs), that these reflect the CIS Code of Ethics commitments, and that they are embedded across programmes and operations to support the school's designs for learning and well-being. Evidence is organised under two headings as specified by CIS: (A) Purpose and guiding principles, and (B) Overview of a learner.",
@@ -267,6 +274,7 @@ export const part2: Section = {
     // Responsible: Head of School Oliver Omotto (Folder 11)
     {
       id: "purpose-self-assessment",
+      updated: "July 2026",
       title: "1. Purpose — Self-Assessment",
       description:
         "The Head of School's self-assessment of Woodcreek's current alignment with the Purpose Cornerstone. Requires two current status statements chosen from the CIS fixed menu — one for Documentation and one for Implementation — followed by a reflective narrative of no more than 150 words identifying significant strengths and areas for further development in the school's documentation and implementation of its purpose and guiding principles. Documentation options: 'Robust, coherent, and regularly reviewed' / 'Clear and relevant with room for development' / 'Currently in active development' / 'Not yet sufficiently developed'. Implementation options: 'Deeply embedded for impact' / 'Widely implemented with room for improvement' / 'Inconsistently implemented' / 'Not yet sufficiently evidenced'.",
@@ -283,6 +291,7 @@ export const part2: Section = {
     // Responsible: Amoshe / Charleston (Folder 9) | HR Manager (C1–C6)
     {
       id: "practices-organisation",
+      updated: "July 2026",
       title: "2. Practices — Organisation of People and Staffing",
       description:
         "Evidence that Woodcreek School has ethical and clear structures in place for managing relationships and supporting the people in its community — including leaders, governors, owners, staff, learners, and families. This section covers the school's organisational structure, defined roles, HR documentation, performance evaluation systems, and communication agreements, as specified under section C and D1 of the CIS Practices evidence requirements.",
@@ -328,6 +337,7 @@ export const part2: Section = {
     // ── PRACTICES: DIMENSION 1 — EMBEDDING GUIDING PRINCIPLES ───────────────
     {
       id: "practices-d1",
+      updated: "July 2026",
       title: "2. Practices — Dimension 1: Embedding Guiding Principles",
       description:
         "Governance-approved policies and operational procedures that embed Woodcreek's guiding principles across whole-school systems. CIS requires evidence across fifteen specific policy areas for this Dimension. For each policy, the portfolio provides both the governance-approved policy document and the operational procedure (handbook, guideline, or equivalent) that puts the policy into practice. Where a document is not yet in place, a brief written explanation is provided.",
@@ -418,6 +428,7 @@ export const part2: Section = {
     // ── PRACTICES: DIMENSION 2 — FOSTERING WELL-BEING ───────────────────────
     {
       id: "practices-d2",
+      updated: "July 2026",
       title: "2. Practices — Dimension 2: Fostering Well-being",
       description:
         "Policies and operational procedures that make up Woodcreek's whole-school design for well-being. CIS requires evidence that the school has a comprehensive, coherent approach to student and staff well-being — covering safeguarding systems, health and safety, behaviour management, digital safety, data ethics, and sustainability. Each policy is accompanied by the operational procedures that put it into practice. Where a policy area is not applicable to Woodcreek's context, a brief written explanation is provided.",
@@ -498,6 +509,7 @@ export const part2: Section = {
     // ── PRACTICES: DIMENSION 3 — ADVANCING LEARNING ─────────────────────────
     {
       id: "practices-d3",
+      updated: "July 2026",
       title: "2. Practices — Dimension 3: Advancing Learning",
       description:
         "Policies and operational procedures that make up Woodcreek's whole-school design for learning, teaching, and assessment — from Early Years through Sixth Form. CIS requires evidence that the school has a comprehensive, coherent approach to curriculum, pedagogy, assessment, inclusion, professional learning, and student transitions. Each policy is accompanied by the operational procedures that put it into practice.",
@@ -589,6 +601,7 @@ export const part2: Section = {
     // Responsible: Head of School Oliver Omotto (Folder 11)
     {
       id: "practices-self-assessment",
+      updated: "July 2026",
       title: "2. Practices — Self-Assessment",
       description:
         "A single self-assessment covering all three Dimensions of Practices (Embedding Guiding Principles, Fostering Well-being, and Advancing Learning). Requires two current status statements chosen from the CIS fixed menu — one for Documentation and one for Implementation — followed by a reflective narrative of no more than 150 words. Documentation options: 'Robust, coherent, and regularly reviewed' / 'Clear and relevant with room for development' / 'Currently in active development' / 'Not yet sufficiently developed'. Implementation options: 'Deeply embedded for impact' / 'Widely implemented with room for improvement' / 'Inconsistently implemented' / 'Not yet sufficiently evidenced'.",
@@ -607,6 +620,7 @@ export const part2: Section = {
     // Share only with CIS IAA and IAC — not with volunteer evaluators.
     {
       id: "planning",
+      updated: "July 2026",
       title: "3. Planning",
       description:
         "Evidence that Woodcreek School's leaders, governors, and owners proactively develop strategic and financial plans that support the school's long-term vision. Organised under two headings as specified by CIS: (E) Strategic planning documentation, and (F) Evidence of financial planning for sustainability. Financial documents (F1–F6) are held in a separate password-protected folder and shared only with the CIS IAA and IAC — not with volunteer evaluators.",
@@ -678,6 +692,7 @@ export const part2: Section = {
     // Responsible: Head of School Oliver Omotto (Folder 11)
     {
       id: "planning-self-assessment",
+      updated: "July 2026",
       title: "3. Planning — Self-Assessment",
       description:
         "The Head of School's self-assessment of Woodcreek's current alignment with the Planning Cornerstone. Requires two current status statements chosen from the CIS fixed menu — one for Documentation and one for Implementation — followed by a reflective narrative of no more than 150 words identifying significant strengths and areas for further development in the school's systems for strategic and sustainable future planning. Documentation options: 'Robust, coherent, and regularly reviewed' / 'Clear and relevant with room for development' / 'Currently in active development' / 'Not yet sufficiently developed'. Implementation options: 'Deeply embedded for impact' / 'Widely implemented with room for improvement' / 'Inconsistently implemented' / 'Not yet sufficiently evidenced'.",
@@ -708,6 +723,7 @@ export const part3: Section = {
   subsections: [
     {
       id: "overview",
+      updated: "July 2026",
       title: "Overview",
       description:
         "Learning Stories will be added here as Development Initiatives are identified and agreed during the Preparatory Engagement Visit. Each story documents the school's journey through the full CIS Innovation Cycle: Intentions (where the initiative began and why), Implementation (how it was planned and delivered), Impact (what difference it made to the community), and Insights (what the school learned and what comes next). Each of the four sections has a maximum of 200 words. The story should be supported by curated evidence — data, community voices, multimedia — linked throughout the text.",

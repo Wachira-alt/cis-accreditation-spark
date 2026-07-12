@@ -84,6 +84,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Woodcreek School — CIS Accreditation Portfolio" },
       { property: "og:description", content: "Portfolio of reflections and evidence for CIS International Accreditation." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://cis.woodcreekschool.sc.ke/images/DSC_9211.webp" },
+      { property: "og:url", content: "https://cis.woodcreekschool.sc.ke/" },
     ],
     links: [
       {
@@ -120,7 +122,7 @@ function RootComponent() {
       <div className="relative min-h-screen flex flex-col">
         <div className="relative z-10 flex flex-col flex-1 min-h-screen">
           <SiteHeader />
-          <main className="flex-1">
+          <main id="main-content" className="flex-1">
             <Outlet />
           </main>
           <SiteFooter />
