@@ -1,15 +1,19 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist/client",
   "framework": null,
+  "functions": {
+    "api/server.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
   "routes": [
     {
       "src": "/assets/(.*)",
-      "dest": "/assets/$1"
+      "dest": "/dist/client/assets/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/api/server.js"
     }
   ]
 }
