@@ -1,15 +1,19 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist/client",
-  "framework": null,
+  "version": 2,
+  "builds": [
+    {
+      "src": "dist/server/server.js",
+      "use": "@vercel/node"
+    }
+  ],
   "routes": [
     {
       "src": "/assets/(.*)",
-      "dest": "/assets/$1"
+      "dest": "/dist/client/assets/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/dist/server/server.js"
     }
   ]
 }
