@@ -1,6 +1,6 @@
 import handler from "../dist/server/server.js";
 
-export const config = { runtime: "nodejs20.x" };
+export const config = { runtime: "nodejs" };
 
 export default async function (req, res) {
   const protocol = req.headers["x-forwarded-proto"] || "https";
