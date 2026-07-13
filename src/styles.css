@@ -75,8 +75,8 @@
   --paper: #ffffff;
   --background: #ffffff;
   --foreground: #1a1a1a;
---ink: #1a1a1a;
---muted-foreground: #3a3a3a;
+  --ink: #1a1a1a;
+  --muted-foreground: #3a3a3a;
 
   --card: oklch(1 0 0);
   --card-foreground: var(--foreground);
@@ -135,22 +135,25 @@
     pointer-events: none;
   }
 
-  h1, h2, h3, h4 {
-  font-family: var(--font-serif);
-  color: var(--color-brand);
-  letter-spacing: -0.01em;
-}
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    color: var(--color-brand);
+    letter-spacing: -0.01em;
+  }
 
   a {
     color: var(--color-brand);
     text-underline-offset: 3px;
-     text-decoration: none;           
-  transition: color 150ms ease;
+    text-decoration: none;
+    transition: color 150ms ease;
   }
 
   a:hover {
     text-decoration: underline;
-     color: #800000;
+    color: #800000;
   }
 }
 
@@ -174,7 +177,10 @@
     text-decoration: underline;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     color: #7b1f24;
     break-after: avoid;
   }
