@@ -33,6 +33,16 @@ export function RotatingHero({
     return () => mq.removeEventListener("change", onChange);
   }, []);
 
+  // Preload every image up front so a rotation never lands on an image that
+  // hasn't downloaded yet (which is what caused the blank gaps between slides).
+  useEffect(() => {
+    images.forEach((src, i) => {
+      const img = new Image();
+      img.onload = () => setLoadedImages((s) => new Set(s).add(i));
+      img.src = src;
+    });
+  }, [images]);
+
   function goTo(i: number) {
     if (i === current || fading) return;
     setPrev(current);

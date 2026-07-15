@@ -100,16 +100,28 @@ export const part1: Section = {
           href: "https://www.youtube.com/playlist?list=PLBRilMq0M96w https://www.youtube.com/playlist?list=PLYKdvgE62zQk",
         },
         {
-          label: "Educators and Staff",
-          href: "https://drive.google.com/drive/folders/1nJBQ9ompeC1t113hFsBywn6JYdrfWPfI",
+          label: "Educators and Staff (Security)",
+          href: "/media/Security%201.mp4",
+        },
+        {
+          label: "Educators and Staff (Support Staff)",
+          href: "/media/Support%20Staff.mp4",
+        },
+        {
+          label: "Educators and Staff (Facilities)",
+          href: "/media/Facilities.aac",
         },
         {
           label: "Leaders (Videos)",
           href: "https://www.youtube.com/playlist?list=PLX3fLfzHdidI",
         },
         {
-          label: "Leaders (Documents)",
-          href: "https://drive.google.com/drive/folders/1W82CrsrOz8Y_cnO7DGI9rxI4GoIH5lC4",
+          label: "Leaders (Document 1)",
+          href: "https://drive.google.com/file/d/14W8nveekfCeAsU1UJB4h-xEujhLowPbh/view",
+        },
+        {
+          label: "Leaders (Document 2)",
+          href: "https://drive.google.com/file/d/1F8bSPHl41AYBbf9mv7nqY7534rBFo_t6/view",
         },
         {
           label: "Owners and Directors",

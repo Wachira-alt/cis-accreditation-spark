@@ -53,6 +53,18 @@ export function getYouTubeEmbed(href: string): string | null {
   return null;
 }
 
+/**
+ * Detects a directly-served media file by extension — e.g. an audio or video file
+ * bundled in the site's /public folder (or any direct file URL). Drive and YouTube
+ * links don't end in a media extension, so they never match here.
+ */
+export function getLocalMediaKind(href: string): "audio" | "video" | null {
+  const clean = href.split("?")[0].toLowerCase();
+  if (/\.(mp3|m4a|aac|wav|ogg|oga)$/.test(clean)) return "audio";
+  if (/\.(mp4|webm|ogv)$/.test(clean)) return "video";
+  return null;
+}
+
 export function EvidenceViewerDialog({
   open,
   onOpenChange,
@@ -184,13 +196,81 @@ export function YouTubeDialog({
   );
 }
 
-/** A single evidence row: on-site viewer for Drive files, YouTube player, or plain external link. */
+/** In-app player for a directly-served video file (bundled in /public or a direct URL). */
+export function LocalVideoDialog({
+  open,
+  onOpenChange,
+  title,
+  src,
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  title: string;
+  src: string;
+}) {
+  return (
+    <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
+      <DialogPrimitive.Portal>
+        <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=open]:fade-in-0" />
+        <DialogPrimitive.Content
+          className="fixed left-1/2 top-1/2 z-50 flex h-[80vh] w-[94vw] max-w-5xl -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-md bg-black shadow-2xl focus:outline-none"
+          aria-describedby={undefined}
+        >
+          <div className="flex items-center gap-3 border-b border-white/10 px-4 py-2.5 shrink-0">
+            <Film className="h-4 w-4 text-white shrink-0" aria-hidden="true" />
+            <DialogPrimitive.Title className="flex-1 truncate font-serif text-sm text-white">
+              {title}
+            </DialogPrimitive.Title>
+            <DialogPrimitive.Close
+              className="rounded-sm p-1 text-white/70 hover:text-white shrink-0"
+              aria-label="Close video"
+            >
+              <X className="h-4 w-4" aria-hidden="true" />
+            </DialogPrimitive.Close>
+          </div>
+          <div className="relative flex-1 bg-black">
+            <video src={src} controls autoPlay className="h-full w-full" />
+          </div>
+        </DialogPrimitive.Content>
+      </DialogPrimitive.Portal>
+    </DialogPrimitive.Root>
+  );
+}
+
+/** A single evidence row: Drive viewer, YouTube player, bundled audio/video, or external link. */
 export function EvidenceLinkRow({ label, href }: { label: string; href: string }) {
   const [open, setOpen] = useState(false);
   const playlistIds = getYouTubePlaylistIds(href);
   const youtubeEmbed = getYouTubeEmbed(href);
+  const localMedia = getLocalMediaKind(href);
   const fileId = getDriveFileId(href);
   const folderId = getDriveFolderId(href);
+
+  // Bundled audio file: a small inline player right in the row.
+  if (localMedia === "audio") {
+    return (
+      <span className="flex flex-col gap-2">
+        <span className="text-[14px] text-foreground">{label}</span>
+        <audio src={href} controls preload="none" className="h-9 w-full max-w-md" />
+      </span>
+    );
+  }
+
+  // Bundled video file: inline player in a dialog.
+  if (localMedia === "video") {
+    return (
+      <span className="inline-flex flex-wrap items-center gap-x-3 gap-y-1">
+        <button
+          onClick={() => setOpen(true)}
+          className="text-left text-[14px] text-brand hover:underline inline-flex items-center gap-1.5"
+        >
+          {label}
+          <Film className="w-3.5 h-3.5 opacity-60 shrink-0" aria-hidden="true" />
+        </button>
+        <LocalVideoDialog open={open} onOpenChange={setOpen} title={label} src={href} />
+      </span>
+    );
+  }
 
   // YouTube playlist(s) with an API key: in-app player plus a clickable list of every video.
   if (playlistIds.length > 0 && GOOGLE_API_KEY) {
