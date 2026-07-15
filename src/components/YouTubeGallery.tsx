@@ -3,14 +3,18 @@ import { ChevronLeft, ChevronRight, ExternalLink, Loader2, Play, Youtube, X } fr
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { GOOGLE_API_KEY } from "@/lib/config";
 
-/** Returns the playlist ID from any YouTube URL that carries a ?list= parameter. */
-export function getYouTubePlaylistId(href: string): string | null {
-  if (!/(?:youtube\.com|youtu\.be)/.test(href)) return null;
-  try {
-    return new URL(href).searchParams.get("list");
-  } catch {
-    return null;
-  }
+/**
+ * Returns every playlist ID found in an href. Usually one, but an href may hold
+ * several YouTube playlist URLs (separated by spaces) — e.g. when a group's videos
+ * were split across playlists because of upload limits — and they merge into one list.
+ */
+export function getYouTubePlaylistIds(href: string): string[] {
+  if (!/(?:youtube\.com|youtu\.be)/.test(href)) return [];
+  const ids: string[] = [];
+  const re = /[?&]list=([a-zA-Z0-9_-]+)/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(href)) !== null) ids.push(m[1]);
+  return ids;
 }
 
 type PlaylistVideo = { id: string; title: string };
@@ -54,13 +58,13 @@ export function YouTubePlaylistDialog({
   open,
   onOpenChange,
   title,
-  playlistId,
+  playlistIds,
   href,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   title: string;
-  playlistId: string;
+  playlistIds: string[];
   href: string;
 }) {
   const [videos, setVideos] = useState<PlaylistVideo[]>([]);
@@ -69,19 +73,23 @@ export function YouTubePlaylistDialog({
   const [error, setError] = useState<string | null>(null);
 
   const current = videos[index];
+  const idsKey = playlistIds.join(",");
 
   const load = useCallback(async () => {
     setLoading(true);
     setError(null);
     setIndex(0);
     try {
-      setVideos(await listPlaylist(playlistId));
+      const ids = idsKey.split(",").filter(Boolean);
+      const all: PlaylistVideo[] = [];
+      for (const pid of ids) all.push(...(await listPlaylist(pid)));
+      setVideos(all);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Could not load this playlist.");
     } finally {
       setLoading(false);
     }
-  }, [playlistId]);
+  }, [idsKey]);
 
   useEffect(() => {
     if (open) load();

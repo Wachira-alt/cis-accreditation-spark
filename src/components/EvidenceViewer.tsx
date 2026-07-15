@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ExternalLink, FileText, Film, Loader2, Youtube, X } from "lucide-react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { FolderGalleryDialog, getDriveFolderId } from "@/components/FolderGallery";
-import { YouTubePlaylistDialog, getYouTubePlaylistId } from "@/components/YouTubeGallery";
+import { YouTubePlaylistDialog, getYouTubePlaylistIds } from "@/components/YouTubeGallery";
 import { GOOGLE_API_KEY } from "@/lib/config";
 
 /**
@@ -187,13 +187,14 @@ export function YouTubeDialog({
 /** A single evidence row: on-site viewer for Drive files, YouTube player, or plain external link. */
 export function EvidenceLinkRow({ label, href }: { label: string; href: string }) {
   const [open, setOpen] = useState(false);
-  const playlistId = getYouTubePlaylistId(href);
+  const playlistIds = getYouTubePlaylistIds(href);
   const youtubeEmbed = getYouTubeEmbed(href);
   const fileId = getDriveFileId(href);
   const folderId = getDriveFolderId(href);
 
-  // YouTube playlist with an API key: in-app player plus a clickable list of every video.
-  if (playlistId && GOOGLE_API_KEY) {
+  // YouTube playlist(s) with an API key: in-app player plus a clickable list of every video.
+  if (playlistIds.length > 0 && GOOGLE_API_KEY) {
+    const ytHref = `https://www.youtube.com/playlist?list=${playlistIds[0]}`;
     return (
       <span className="inline-flex flex-wrap items-center gap-x-3 gap-y-1">
         <button
@@ -204,7 +205,7 @@ export function EvidenceLinkRow({ label, href }: { label: string; href: string }
           <Youtube className="w-3.5 h-3.5 opacity-60 shrink-0" aria-hidden="true" />
         </button>
         <a
-          href={href}
+          href={ytHref}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`${label}, open on YouTube (opens in a new tab)`}
@@ -216,8 +217,8 @@ export function EvidenceLinkRow({ label, href }: { label: string; href: string }
           open={open}
           onOpenChange={setOpen}
           title={label}
-          playlistId={playlistId}
-          href={href}
+          playlistIds={playlistIds}
+          href={ytHref}
         />
       </span>
     );

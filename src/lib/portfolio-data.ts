@@ -97,14 +97,18 @@ export const part1: Section = {
       links: [
         {
           label: "Learners",
-          href: "https://www.youtube.com/playlist?list=PLYKdvgE62zQk",
+          href: "https://www.youtube.com/playlist?list=PLBRilMq0M96w https://www.youtube.com/playlist?list=PLYKdvgE62zQk",
         },
         {
           label: "Educators and Staff",
           href: "https://drive.google.com/drive/folders/1nJBQ9ompeC1t113hFsBywn6JYdrfWPfI",
         },
         {
-          label: "Leaders",
+          label: "Leaders (Videos)",
+          href: "https://www.youtube.com/playlist?list=PLX3fLfzHdidI",
+        },
+        {
+          label: "Leaders (Documents)",
           href: "https://drive.google.com/drive/folders/1W82CrsrOz8Y_cnO7DGI9rxI4GoIH5lC4",
         },
         {
@@ -117,7 +121,7 @@ export const part1: Section = {
         },
         {
           label: "Alumni",
-          href: "https://drive.google.com/drive/folders/15onTGg58JXOOIjy8blaSRExWtMvEwz5t",
+          href: "https://www.youtube.com/playlist?list=PLdVbZuSMirsU",
         },
       ],
     },
