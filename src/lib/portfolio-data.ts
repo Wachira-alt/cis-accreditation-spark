@@ -97,7 +97,7 @@ export const part1: Section = {
       links: [
         {
           label: "Learners",
-          href: "https://drive.google.com/drive/folders/1q0B6M-xOhc2zkN0qtQAFXV6hPTL1Bhy7",
+          href: "https://www.youtube.com/playlist?list=PLYKdvgE62zQk",
         },
         {
           label: "Educators and Staff",
@@ -113,7 +113,7 @@ export const part1: Section = {
         },
         {
           label: "Parents",
-          href: "https://drive.google.com/drive/folders/1pM-ELc3Y82PYAcBdY7Gat61o2G0FIGoL",
+          href: "https://www.youtube.com/playlist?list=PLQFon3yxjM9E",
         },
         {
           label: "Alumni",
