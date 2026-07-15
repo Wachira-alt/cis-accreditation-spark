@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ExternalLink, FileText, Film, Loader2, Youtube, X } from "lucide-react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { FolderGalleryDialog, getDriveFolderId } from "@/components/FolderGallery";
+import { YouTubePlaylistDialog, getYouTubePlaylistId } from "@/components/YouTubeGallery";
 import { GOOGLE_API_KEY } from "@/lib/config";
 
 /**
@@ -186,11 +187,43 @@ export function YouTubeDialog({
 /** A single evidence row: on-site viewer for Drive files, YouTube player, or plain external link. */
 export function EvidenceLinkRow({ label, href }: { label: string; href: string }) {
   const [open, setOpen] = useState(false);
+  const playlistId = getYouTubePlaylistId(href);
   const youtubeEmbed = getYouTubeEmbed(href);
   const fileId = getDriveFileId(href);
   const folderId = getDriveFolderId(href);
 
-  // YouTube video or playlist: inline player (playlists get next / previous automatically).
+  // YouTube playlist with an API key: in-app player plus a clickable list of every video.
+  if (playlistId && GOOGLE_API_KEY) {
+    return (
+      <span className="inline-flex flex-wrap items-center gap-x-3 gap-y-1">
+        <button
+          onClick={() => setOpen(true)}
+          className="text-left text-[14px] text-brand hover:underline inline-flex items-center gap-1.5"
+        >
+          {label}
+          <Youtube className="w-3.5 h-3.5 opacity-60 shrink-0" aria-hidden="true" />
+        </button>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${label}, open on YouTube (opens in a new tab)`}
+          className="text-[11px] uppercase tracking-[0.12em] text-foreground/50 hover:text-brand no-underline hover:no-underline"
+        >
+          YouTube ↗
+        </a>
+        <YouTubePlaylistDialog
+          open={open}
+          onOpenChange={setOpen}
+          title={label}
+          playlistId={playlistId}
+          href={href}
+        />
+      </span>
+    );
+  }
+
+  // YouTube video or a playlist without an API key: inline player (playlists still get next / previous).
   if (youtubeEmbed) {
     return (
       <span className="inline-flex flex-wrap items-center gap-x-3 gap-y-1">
