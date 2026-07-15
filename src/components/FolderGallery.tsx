@@ -249,8 +249,8 @@ export function FolderGalleryDialog({
                     title={currentFile.name}
                     onLoad={() => setFrameLoaded(true)}
                     className={`h-full w-full transition-opacity duration-300 ${frameLoaded ? "opacity-100" : "opacity-0"}`}
-                    allow="autoplay"
-                    referrerPolicy="no-referrer"
+                    allow="autoplay; fullscreen; encrypted-media"
+                    allowFullScreen
                   />
                 )}
               </div>

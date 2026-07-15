@@ -79,8 +79,8 @@ export function EvidenceViewerDialog({
               className={`relative h-full w-full transition-opacity duration-300 ${
                 loaded ? "opacity-100" : "opacity-0"
               }`}
-              allow="autoplay"
-              referrerPolicy="no-referrer"
+              allow="autoplay; fullscreen; encrypted-media"
+              allowFullScreen
             />
           </div>
 
