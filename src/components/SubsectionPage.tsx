@@ -112,16 +112,11 @@ export function SubsectionPage({
             {sub.links.map((link) => {
               const placeholder = link.href === "#";
               return (
-                <li key={link.label} className="py-4 flex flex-col gap-1">
+                <li key={link.label} className="py-4">
                   {placeholder ? (
                     <span className="text-[14px] text-foreground/60 italic">{link.label}</span>
                   ) : (
                     <EvidenceLinkRow label={link.label} href={link.href} />
-                  )}
-                  {link.note && (
-                    <span className="text-xs text-foreground/60 leading-snug max-w-prose">
-                      {link.note}
-                    </span>
                   )}
                 </li>
               );

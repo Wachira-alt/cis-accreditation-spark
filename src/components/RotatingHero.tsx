@@ -68,6 +68,7 @@ export function RotatingHero({
         src={images[current]}
         alt=""
         decoding="async"
+        fetchPriority="high"
         onLoad={() => setLoadedImages((s) => new Set(s).add(current))}
         className="absolute inset-0 w-full h-full object-cover object-center"
         style={{

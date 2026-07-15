@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { ExternalLink, FileText, X } from "lucide-react";
+import { ExternalLink, FileText, Film, Loader2, X } from "lucide-react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { FolderGalleryDialog, getDriveFolderId } from "@/components/FolderGallery";
+import { GOOGLE_API_KEY } from "@/lib/config";
 
 /**
  * Extracts a Google Drive file ID from any common Drive URL shape:
@@ -32,6 +34,7 @@ export function EvidenceViewerDialog({
   driveId: string;
   href: string;
 }) {
+  const [loaded, setLoaded] = useState(false);
   return (
     <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
       <DialogPrimitive.Portal>
@@ -63,14 +66,21 @@ export function EvidenceViewerDialog({
           </div>
 
           <div className="relative flex-1 bg-neutral-100">
-            <div className="absolute inset-0 flex items-center justify-center text-sm text-foreground/50">
-              Loading document…
-            </div>
+            {!loaded && (
+              <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 text-sm text-foreground/50">
+                <Loader2 className="h-6 w-6 animate-spin text-brand" aria-hidden="true" />
+                Loading preview…
+              </div>
+            )}
             <iframe
               src={`https://drive.google.com/file/d/${driveId}/preview`}
               title={title}
-              className="relative h-full w-full"
+              onLoad={() => setLoaded(true)}
+              className={`relative h-full w-full transition-opacity duration-300 ${
+                loaded ? "opacity-100" : "opacity-0"
+              }`}
               allow="autoplay"
+              referrerPolicy="no-referrer"
             />
           </div>
 
@@ -87,51 +97,85 @@ export function EvidenceViewerDialog({
 /** A single evidence row: on-site viewer for Drive files, plain external link otherwise. */
 export function EvidenceLinkRow({ label, href }: { label: string; href: string }) {
   const [open, setOpen] = useState(false);
-  const driveId = getDriveFileId(href);
+  const fileId = getDriveFileId(href);
+  const folderId = getDriveFolderId(href);
 
-  if (!driveId) {
+  // Single Drive file: inline document / video viewer.
+  if (fileId) {
     return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`${label} (opens in a new tab)`}
-        className="text-[14px] text-brand hover:underline inline-flex items-center gap-1.5 group"
-      >
-        {label}
-        <ExternalLink
-          className="w-3 h-3 opacity-40 sm:opacity-0 sm:-translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0"
-          aria-hidden="true"
+      <span className="inline-flex flex-wrap items-center gap-x-3 gap-y-1">
+        <button
+          onClick={() => setOpen(true)}
+          className="text-left text-[14px] text-brand hover:underline inline-flex items-center gap-1.5"
+        >
+          {label}
+          <FileText className="w-3 h-3 opacity-50 shrink-0" aria-hidden="true" />
+        </button>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${label}, open in Drive (opens in a new tab)`}
+          className="text-[11px] uppercase tracking-[0.12em] text-foreground/50 hover:text-brand no-underline hover:no-underline"
+        >
+          Drive ↗
+        </a>
+        <EvidenceViewerDialog
+          open={open}
+          onOpenChange={setOpen}
+          title={label}
+          driveId={fileId}
+          href={href}
         />
-      </a>
+      </span>
     );
   }
 
+  // Drive folder with an API key configured: in-app gallery with play and next / previous.
+  if (folderId && GOOGLE_API_KEY) {
+    return (
+      <span className="inline-flex flex-wrap items-center gap-x-3 gap-y-1">
+        <button
+          onClick={() => setOpen(true)}
+          className="text-left text-[14px] text-brand hover:underline inline-flex items-center gap-1.5"
+        >
+          {label}
+          <Film className="w-3 h-3 opacity-50 shrink-0" aria-hidden="true" />
+        </button>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${label}, open in Drive (opens in a new tab)`}
+          className="text-[11px] uppercase tracking-[0.12em] text-foreground/50 hover:text-brand no-underline hover:no-underline"
+        >
+          Drive ↗
+        </a>
+        <FolderGalleryDialog
+          open={open}
+          onOpenChange={setOpen}
+          title={label}
+          folderId={folderId}
+          href={href}
+        />
+      </span>
+    );
+  }
+
+  // Non-Drive link, or a folder with no API key configured: open externally.
   return (
-    <span className="inline-flex flex-wrap items-center gap-x-3 gap-y-1">
-      <button
-        onClick={() => setOpen(true)}
-        className="text-left text-[14px] text-brand hover:underline inline-flex items-center gap-1.5"
-      >
-        {label}
-        <FileText className="w-3 h-3 opacity-50 shrink-0" aria-hidden="true" />
-      </button>
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`${label} — open in Drive (opens in a new tab)`}
-        className="text-[11px] uppercase tracking-[0.12em] text-foreground/50 hover:text-brand no-underline hover:no-underline"
-      >
-        Drive ↗
-      </a>
-      <EvidenceViewerDialog
-        open={open}
-        onOpenChange={setOpen}
-        title={label}
-        driveId={driveId}
-        href={href}
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${label} (opens in a new tab)`}
+      className="text-[14px] text-brand hover:underline inline-flex items-center gap-1.5 group"
+    >
+      {label}
+      <ExternalLink
+        className="w-3 h-3 opacity-40 sm:opacity-0 sm:-translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0"
+        aria-hidden="true"
       />
-    </span>
+    </a>
   );
 }

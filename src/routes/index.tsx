@@ -12,7 +12,7 @@ const OVERVIEW_IMAGES = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Woodcreek School — CIS Accreditation Portfolio" },
+      { title: "Woodcreek School | CIS Accreditation Portfolio" },
       {
         name: "description",
         content:

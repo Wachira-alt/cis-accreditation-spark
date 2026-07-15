@@ -79,13 +79,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Woodcreek School — CIS Accreditation Portfolio" },
+      { title: "Woodcreek School | CIS Accreditation Portfolio" },
       {
         name: "description",
         content:
           "Woodcreek School's portfolio for CIS International Accreditation: Learning Community Profile, Cornerstone Expectations, and Learning Stories.",
       },
-      { property: "og:title", content: "Woodcreek School — CIS Accreditation Portfolio" },
+      { property: "og:title", content: "Woodcreek School | CIS Accreditation Portfolio" },
       {
         property: "og:description",
         content: "Portfolio of reflections and evidence for CIS International Accreditation.",
@@ -99,6 +99,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "preconnect", href: "https://drive.google.com" },
+      { rel: "preconnect", href: "https://docs.google.com" },
     ],
   }),
   shellComponent: RootShell,

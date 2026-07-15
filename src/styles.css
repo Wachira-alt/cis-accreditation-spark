@@ -157,7 +157,16 @@
   }
 }
 
-/* ── Print: evaluators print sections; keep them clean and ink-friendly ── */
+/* On phones the content runs full width, so soften the watermark to keep text readable. */
+@media (max-width: 640px) {
+  body::before {
+    width: 100%;
+    opacity: 0.12;
+    background-position: right top;
+  }
+}
+
+/* Print: evaluators print sections; keep them clean and ink-friendly */
 @media print {
   body::before {
     display: none; /* watermark */
