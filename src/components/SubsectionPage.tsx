@@ -116,7 +116,7 @@ export function SubsectionPage({
                   {placeholder ? (
                     <span className="text-[14px] text-foreground/60 italic">{link.label}</span>
                   ) : (
-                    <EvidenceLinkRow label={link.label} href={link.href} />
+                    <EvidenceLinkRow label={link.label} href={link.href} items={link.items} />
                   )}
                 </li>
               );

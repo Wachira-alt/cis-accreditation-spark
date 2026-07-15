@@ -5,6 +5,8 @@ export type EvidenceLink = {
   label: string;
   href: string;
   note?: string;
+  /** When set, the link opens a gallery that lets you choose and preview each item. */
+  items?: { label: string; href: string }[];
 };
 
 export type Subsection = {
@@ -100,28 +102,31 @@ export const part1: Section = {
           href: "https://www.youtube.com/playlist?list=PLBRilMq0M96w https://www.youtube.com/playlist?list=PLYKdvgE62zQk",
         },
         {
-          label: "Educators and Staff (Security)",
+          label: "Educators and Staff",
           href: "/media/Security%201.mp4",
-        },
-        {
-          label: "Educators and Staff (Support Staff)",
-          href: "/media/Support%20Staff.mp4",
-        },
-        {
-          label: "Educators and Staff (Facilities)",
-          href: "/media/Facilities.aac",
+          items: [
+            { label: "Security", href: "/media/Security%201.mp4" },
+            { label: "Support Staff", href: "/media/Support%20Staff.mp4" },
+            { label: "Facilities (audio)", href: "/media/Facilities.aac" },
+          ],
         },
         {
           label: "Leaders (Videos)",
           href: "https://www.youtube.com/playlist?list=PLX3fLfzHdidI",
         },
         {
-          label: "Leaders (Document 1)",
+          label: "Leaders (Documents)",
           href: "https://drive.google.com/file/d/14W8nveekfCeAsU1UJB4h-xEujhLowPbh/view",
-        },
-        {
-          label: "Leaders (Document 2)",
-          href: "https://drive.google.com/file/d/1F8bSPHl41AYBbf9mv7nqY7534rBFo_t6/view",
+          items: [
+            {
+              label: "Document 1",
+              href: "https://drive.google.com/file/d/14W8nveekfCeAsU1UJB4h-xEujhLowPbh/view",
+            },
+            {
+              label: "Document 2",
+              href: "https://drive.google.com/file/d/1F8bSPHl41AYBbf9mv7nqY7534rBFo_t6/view",
+            },
+          ],
         },
         {
           label: "Owners and Directors",

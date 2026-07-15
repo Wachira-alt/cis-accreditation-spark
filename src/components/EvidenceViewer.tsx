@@ -1,5 +1,16 @@
-import { useState } from "react";
-import { ExternalLink, FileText, Film, Loader2, Youtube, X } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ExternalLink,
+  FileText,
+  Film,
+  Image as ImageIcon,
+  Loader2,
+  Music,
+  Youtube,
+  X,
+} from "lucide-react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { FolderGalleryDialog, getDriveFolderId } from "@/components/FolderGallery";
 import { YouTubePlaylistDialog, getYouTubePlaylistIds } from "@/components/YouTubeGallery";
@@ -63,6 +74,10 @@ export function getLocalMediaKind(href: string): "audio" | "video" | null {
   if (/\.(mp3|m4a|aac|wav|ogg|oga)$/.test(clean)) return "audio";
   if (/\.(mp4|webm|ogv)$/.test(clean)) return "video";
   return null;
+}
+
+function isImageHref(href: string): boolean {
+  return /\.(png|jpe?g|webp|gif|avif|svg)$/.test(href.split("?")[0].toLowerCase());
 }
 
 export function EvidenceViewerDialog({
@@ -237,9 +252,192 @@ export function LocalVideoDialog({
   );
 }
 
-/** A single evidence row: Drive viewer, YouTube player, bundled audio/video, or external link. */
-export function EvidenceLinkRow({ label, href }: { label: string; href: string }) {
+type GalleryItem = { label: string; href: string };
+
+function ItemIcon({ href }: { href: string }) {
+  const cls = "h-3.5 w-3.5 shrink-0";
+  const media = getLocalMediaKind(href);
+  if (media === "audio") return <Music className={cls} aria-hidden="true" />;
+  if (media === "video") return <Film className={cls} aria-hidden="true" />;
+  if (getYouTubeEmbed(href)) return <Youtube className={cls} aria-hidden="true" />;
+  if (isImageHref(href)) return <ImageIcon className={cls} aria-hidden="true" />;
+  return <FileText className={cls} aria-hidden="true" />;
+}
+
+function ItemStage({ item }: { item: GalleryItem }) {
+  const media = getLocalMediaKind(item.href);
+  if (media === "audio") {
+    return (
+      <div className="flex h-full w-full items-center justify-center p-6">
+        <audio key={item.href} src={item.href} controls autoPlay className="w-full max-w-lg" />
+      </div>
+    );
+  }
+  if (media === "video") {
+    return <video key={item.href} src={item.href} controls autoPlay className="h-full w-full bg-black" />;
+  }
+  const yt = getYouTubeEmbed(item.href);
+  if (yt) {
+    return (
+      <iframe
+        key={item.href}
+        src={yt}
+        title={item.label}
+        className="h-full w-full"
+        allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+        allowFullScreen
+      />
+    );
+  }
+  const fileId = getDriveFileId(item.href);
+  if (fileId) {
+    return (
+      <iframe
+        key={item.href}
+        src={`https://drive.google.com/file/d/${fileId}/preview`}
+        title={item.label}
+        className="h-full w-full"
+        allow="autoplay; fullscreen; encrypted-media"
+        allowFullScreen
+      />
+    );
+  }
+  if (isImageHref(item.href)) {
+    return <img key={item.href} src={item.href} alt={item.label} className="h-full w-full object-contain" />;
+  }
+  return (
+    <div className="flex h-full items-center justify-center">
+      <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-brand hover:underline">
+        Open this item
+      </a>
+    </div>
+  );
+}
+
+/** Gallery for a hand-picked list of items — a chooser sidebar plus an inline preview of each. */
+export function ItemGalleryDialog({
+  open,
+  onOpenChange,
+  title,
+  items,
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  title: string;
+  items: GalleryItem[];
+}) {
+  const [index, setIndex] = useState(0);
+  const current = items[index];
+
+  useEffect(() => {
+    if (open) setIndex(0);
+  }, [open]);
+
+  const step = useCallback(
+    (delta: number) => setIndex((i) => (i + delta + items.length) % items.length),
+    [items.length],
+  );
+
+  useEffect(() => {
+    if (!open) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "ArrowRight") step(1);
+      if (e.key === "ArrowLeft") step(-1);
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, step]);
+
+  return (
+    <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
+      <DialogPrimitive.Portal>
+        <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/70 data-[state=open]:animate-in data-[state=open]:fade-in-0" />
+        <DialogPrimitive.Content
+          className="fixed left-1/2 top-1/2 z-50 flex h-[88vh] w-[95vw] max-w-6xl -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-md bg-white shadow-2xl focus:outline-none"
+          aria-describedby={undefined}
+        >
+          <div className="flex items-center gap-3 border-b border-rule px-4 py-2.5 shrink-0">
+            <FileText className="h-4 w-4 text-brand shrink-0" aria-hidden="true" />
+            <DialogPrimitive.Title className="flex-1 truncate font-serif text-sm text-brand">
+              {title}
+            </DialogPrimitive.Title>
+            <DialogPrimitive.Close
+              className="rounded-sm p-1 text-foreground/60 hover:text-foreground shrink-0"
+              aria-label="Close"
+            >
+              <X className="h-4 w-4" aria-hidden="true" />
+            </DialogPrimitive.Close>
+          </div>
+
+          <div className="flex min-h-0 flex-1 flex-col sm:flex-row">
+            <div className="shrink-0 overflow-y-auto border-b border-rule sm:w-64 sm:border-b-0 sm:border-r">
+              {items.map((it, i) => (
+                <button
+                  key={`${it.href}-${i}`}
+                  onClick={() => setIndex(i)}
+                  aria-current={i === index}
+                  className={`flex w-full items-center gap-2 px-3 py-2.5 text-left text-[13px] hover:bg-neutral-50 ${
+                    i === index ? "bg-neutral-100 text-brand font-medium" : "text-foreground/80"
+                  }`}
+                >
+                  <span className="w-5 shrink-0 text-right text-foreground/40">{i + 1}</span>
+                  <ItemIcon href={it.href} />
+                  <span className="truncate">{it.label}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="relative flex min-h-0 flex-1 flex-col bg-neutral-100">
+              <div className="relative flex-1">{current && <ItemStage item={current} />}</div>
+              {items.length > 1 && (
+                <div className="flex items-center justify-between gap-3 border-t border-rule bg-white px-4 py-2 shrink-0">
+                  <button onClick={() => step(-1)} className="inline-flex items-center gap-1 text-sm text-brand">
+                    <ChevronLeft className="h-4 w-4" aria-hidden="true" /> Previous
+                  </button>
+                  <span className="truncate px-2 text-center text-[13px] text-foreground/70">
+                    {current?.label} · {index + 1} of {items.length}
+                  </span>
+                  <button onClick={() => step(1)} className="inline-flex items-center gap-1 text-sm text-brand">
+                    Next <ChevronRight className="h-4 w-4" aria-hidden="true" />
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </DialogPrimitive.Content>
+      </DialogPrimitive.Portal>
+    </DialogPrimitive.Root>
+  );
+}
+
+/** A single evidence row: multi-item gallery, Drive viewer, YouTube player, bundled media, or link. */
+export function EvidenceLinkRow({
+  label,
+  href,
+  items,
+}: {
+  label: string;
+  href: string;
+  items?: GalleryItem[];
+}) {
   const [open, setOpen] = useState(false);
+
+  // Curated set of files: one link that opens a chooser with a preview of each item.
+  if (items && items.length > 0) {
+    return (
+      <span className="inline-flex flex-wrap items-center gap-x-3 gap-y-1">
+        <button
+          onClick={() => setOpen(true)}
+          className="text-left text-[14px] text-brand hover:underline inline-flex items-center gap-1.5"
+        >
+          {label}
+          <FileText className="w-3 h-3 opacity-50 shrink-0" aria-hidden="true" />
+        </button>
+        <ItemGalleryDialog open={open} onOpenChange={setOpen} title={label} items={items} />
+      </span>
+    );
+  }
+
   const playlistIds = getYouTubePlaylistIds(href);
   const youtubeEmbed = getYouTubeEmbed(href);
   const localMedia = getLocalMediaKind(href);
