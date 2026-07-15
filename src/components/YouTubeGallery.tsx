@@ -181,7 +181,7 @@ export function YouTubePlaylistDialog({
                 {current && (
                   <iframe
                     key={current.id}
-                    src={`https://www.youtube.com/embed/${current.id}?rel=0&autoplay=1`}
+                    src={`https://www.youtube-nocookie.com/embed/${current.id}?rel=0&autoplay=1`}
                     title={current.title}
                     className="h-full w-full"
                     allow="autoplay; encrypted-media; fullscreen; picture-in-picture"

@@ -47,9 +47,9 @@ export function getYouTubeEmbed(href: string): string | null {
   } catch {
     return null;
   }
-  if (videoId && listId) return `https://www.youtube.com/embed/${videoId}?list=${listId}&rel=0`;
-  if (videoId) return `https://www.youtube.com/embed/${videoId}?rel=0`;
-  if (listId) return `https://www.youtube.com/embed/videoseries?list=${listId}&rel=0`;
+  if (videoId && listId) return `https://www.youtube-nocookie.com/embed/${videoId}?list=${listId}&rel=0`;
+  if (videoId) return `https://www.youtube-nocookie.com/embed/${videoId}?rel=0`;
+  if (listId) return `https://www.youtube-nocookie.com/embed/videoseries?list=${listId}&rel=0`;
   return null;
 }
 
