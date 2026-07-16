@@ -130,7 +130,7 @@ export const part1: Section = {
         },
         {
           label: "Owners and Directors",
-          href: P,
+          href: "https://www.youtube.com/playlist?list=PLX_qGgBq5744",
         },
         {
           label: "Parents",
@@ -244,8 +244,7 @@ export const part2: Section = {
       id: "purpose-self-assessment",
       updated: "July 2026",
       title: "1. Purpose Self-Assessment",
-      description:
-        "The school's own reflection on the strengths and areas for development in how our purpose and guiding principles are documented and put into practice.",
+      description: "",
       links: [
         {
           label: "Purpose Self-Assessment",
@@ -514,8 +513,7 @@ export const part2: Section = {
       id: "practices-self-assessment",
       updated: "July 2026",
       title: "2. Practices Self-Assessment",
-      description:
-        "The school's own reflection on the strengths and areas for development across all three dimensions of its practices.",
+      description: "",
       links: [
         {
           label: "Practices Self-Assessment",
@@ -590,8 +588,7 @@ export const part2: Section = {
       id: "planning-self-assessment",
       updated: "July 2026",
       title: "3. Planning Self-Assessment",
-      description:
-        "The school's own reflection on the strengths and areas for development in how it plans for a strategic and sustainable future.",
+      description: "",
       links: [
         {
           label: "Planning Self-Assessment",

@@ -62,9 +62,11 @@ export function SubsectionPage({
             </p>
           )}
           <h1 className="font-serif text-3xl sm:text-4xl text-white leading-tight">{main}</h1>
-          <p className="mt-4 text-sm text-white/85 max-w-xl leading-relaxed hidden sm:block">
-            {sub.description}
-          </p>
+          {sub.description && (
+            <p className="mt-4 text-sm text-white/85 max-w-xl leading-relaxed hidden sm:block">
+              {sub.description}
+            </p>
+          )}
         </div>
       </RotatingHero>
 
@@ -97,9 +99,11 @@ export function SubsectionPage({
       </div>
 
       {/* Description in the document flow for mobile readers (hero copy is hidden there) */}
-      <p className="sm:hidden max-w-4xl mx-auto px-6 pt-6 text-[15px] leading-relaxed text-foreground">
-        {sub.description}
-      </p>
+      {sub.description && (
+        <p className="sm:hidden max-w-4xl mx-auto px-6 pt-6 text-[15px] leading-relaxed text-foreground">
+          {sub.description}
+        </p>
+      )}
 
       <div className="max-w-4xl mx-auto px-6 sm:px-8 py-8 sm:py-10">
         {sub.updated && (
