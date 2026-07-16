@@ -403,7 +403,7 @@ export const part2: Section = {
         },
         {
           label: "Human Resource Management Policy",
-          href: "https://drive.google.com/drive/folders/1XztgLWdW4LNadoaUpueJNa2B6jGKTpJQ",
+          href: "https://drive.google.com/file/d/1KGLwEe8ZZb0j9GyrcYnicA3XBlCnlt1w/view?usp=drive_link",
         },
         {
           label: "Recruitment and Retention Policy",
