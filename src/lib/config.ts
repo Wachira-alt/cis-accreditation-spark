@@ -25,3 +25,11 @@ export const GOOGLE_API_KEY: string = (env.VITE_GOOGLE_API_KEY ?? "").trim();
  * (it ends with /viewform?embedded=true). Paste it between the quotes below.
  */
 export const CIS_FEEDBACK_FORM_URL: string = "";
+
+/**
+ * Password for documents labelled "(Restricted)" (the financial F-documents).
+ * NOTE: client-side gate only — it deters casual access, but the value ships in the browser
+ * bundle, so it is not real security. True protection comes from each Drive file being shared
+ * with specific people only. Use it as a light barrier, not a vault.
+ */
+export const RESTRICTED_PASSWORD: string = "Rloft@135";

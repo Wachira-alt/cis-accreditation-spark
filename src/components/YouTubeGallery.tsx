@@ -145,7 +145,7 @@ export function YouTubePlaylistDialog({
 
           <div className="flex min-h-0 flex-1 flex-col sm:flex-row">
             {/* Video chooser */}
-            <div className="shrink-0 overflow-y-auto border-b border-white/10 bg-neutral-900 sm:w-72 sm:border-b-0 sm:border-r">
+            <div className="max-h-40 shrink-0 overflow-y-auto border-b border-white/10 bg-neutral-900 sm:max-h-none sm:w-72 sm:border-b-0 sm:border-r">
               {videos.map((v, i) => (
                 <button
                   key={`${v.id}-${i}`}
@@ -170,7 +170,7 @@ export function YouTubePlaylistDialog({
             </div>
 
             {/* Player */}
-            <div className="relative flex min-h-0 flex-1 flex-col bg-black">
+            <div className="relative flex min-h-[46vh] flex-1 flex-col bg-black sm:min-h-0">
               <div className="relative flex-1">
                 {loading && (
                   <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 text-sm text-white/60">

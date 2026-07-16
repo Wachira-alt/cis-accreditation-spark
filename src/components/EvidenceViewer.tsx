@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, type FormEvent } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -7,6 +7,7 @@ import {
   Film,
   Image as ImageIcon,
   Loader2,
+  Lock,
   Music,
   Youtube,
   X,
@@ -14,7 +15,7 @@ import {
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { FolderGalleryDialog, getDriveFolderId } from "@/components/FolderGallery";
 import { YouTubePlaylistDialog, getYouTubePlaylistIds } from "@/components/YouTubeGallery";
-import { GOOGLE_API_KEY } from "@/lib/config";
+import { GOOGLE_API_KEY, RESTRICTED_PASSWORD } from "@/lib/config";
 
 /**
  * Extracts a Google Drive file ID from any common Drive URL shape:
@@ -370,7 +371,7 @@ export function ItemGalleryDialog({
           </div>
 
           <div className="flex min-h-0 flex-1 flex-col sm:flex-row">
-            <div className="shrink-0 overflow-y-auto border-b border-rule sm:w-64 sm:border-b-0 sm:border-r">
+            <div className="max-h-40 shrink-0 overflow-y-auto border-b border-rule sm:max-h-none sm:w-64 sm:border-b-0 sm:border-r">
               {items.map((it, i) => (
                 <button
                   key={`${it.href}-${i}`}
@@ -387,7 +388,7 @@ export function ItemGalleryDialog({
               ))}
             </div>
 
-            <div className="relative flex min-h-0 flex-1 flex-col bg-neutral-100">
+            <div className="relative flex min-h-[46vh] flex-1 flex-col bg-neutral-100 sm:min-h-0">
               <div className="relative flex-1">{current && <ItemStage item={current} />}</div>
               {items.length > 1 && (
                 <div className="flex items-center justify-between gap-3 border-t border-rule bg-white px-4 py-2 shrink-0">
@@ -410,6 +411,95 @@ export function ItemGalleryDialog({
   );
 }
 
+const UNLOCK_KEY = "cis-restricted-unlocked";
+
+function restrictedUnlocked(): boolean {
+  try {
+    return sessionStorage.getItem(UNLOCK_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function markRestrictedUnlocked() {
+  try {
+    sessionStorage.setItem(UNLOCK_KEY, "1");
+  } catch {
+    /* ignore */
+  }
+  window.dispatchEvent(new Event("cis-unlock"));
+}
+
+/** Small password prompt gating the "(Restricted)" financial documents. */
+function PasswordDialog({
+  open,
+  onOpenChange,
+  onUnlock,
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  onUnlock: () => void;
+}) {
+  const [value, setValue] = useState("");
+  const [error, setError] = useState(false);
+
+  function submit(e: FormEvent) {
+    e.preventDefault();
+    if (value === RESTRICTED_PASSWORD) {
+      setValue("");
+      setError(false);
+      onUnlock();
+    } else {
+      setError(true);
+    }
+  }
+
+  return (
+    <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
+      <DialogPrimitive.Portal>
+        <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/70 data-[state=open]:animate-in data-[state=open]:fade-in-0" />
+        <DialogPrimitive.Content className="fixed left-1/2 top-1/2 z-50 w-[92vw] max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-md bg-white p-6 shadow-2xl focus:outline-none">
+          <div className="mb-3 flex items-center gap-2">
+            <Lock className="h-4 w-4 text-brand" aria-hidden="true" />
+            <DialogPrimitive.Title className="font-serif text-base text-brand">
+              Restricted document
+            </DialogPrimitive.Title>
+          </div>
+          <p className="mb-4 text-sm text-foreground/70">
+            These documents are shared with the CIS review team only. Enter the access password to
+            continue.
+          </p>
+          <form onSubmit={submit} className="flex flex-col gap-3">
+            <input
+              type="password"
+              autoFocus
+              value={value}
+              onChange={(e) => {
+                setValue(e.target.value);
+                setError(false);
+              }}
+              placeholder="Access password"
+              className="rounded-sm border border-rule px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand/40"
+            />
+            {error && <p className="text-sm text-red-700">Incorrect password.</p>}
+            <div className="flex justify-end gap-2">
+              <DialogPrimitive.Close className="rounded-sm px-3 py-2 text-sm text-foreground/70 hover:text-foreground">
+                Cancel
+              </DialogPrimitive.Close>
+              <button
+                type="submit"
+                className="rounded-sm bg-brand px-4 py-2 text-sm font-medium text-white hover:bg-[#800000]"
+              >
+                Unlock
+              </button>
+            </div>
+          </form>
+        </DialogPrimitive.Content>
+      </DialogPrimitive.Portal>
+    </DialogPrimitive.Root>
+  );
+}
+
 /** A single evidence row: multi-item gallery, Drive viewer, YouTube player, bundled media, or link. */
 export function EvidenceLinkRow({
   label,
@@ -421,6 +511,42 @@ export function EvidenceLinkRow({
   items?: GalleryItem[];
 }) {
   const [open, setOpen] = useState(false);
+  const restricted = /restricted/i.test(label);
+  const [unlocked, setUnlocked] = useState(restrictedUnlocked);
+  const [pwOpen, setPwOpen] = useState(false);
+
+  // Once one restricted document is unlocked, unlock them all for this session.
+  useEffect(() => {
+    if (!restricted) return;
+    const handler = () => setUnlocked(true);
+    window.addEventListener("cis-unlock", handler);
+    return () => window.removeEventListener("cis-unlock", handler);
+  }, [restricted]);
+
+  // Locked restricted document: ask for the password first, then open it.
+  if (restricted && !unlocked) {
+    return (
+      <span className="inline-flex flex-wrap items-center gap-x-3 gap-y-1">
+        <button
+          onClick={() => setPwOpen(true)}
+          className="text-left text-[14px] text-brand hover:underline inline-flex items-center gap-1.5"
+        >
+          {label}
+          <Lock className="w-3 h-3 opacity-50 shrink-0" aria-hidden="true" />
+        </button>
+        <PasswordDialog
+          open={pwOpen}
+          onOpenChange={setPwOpen}
+          onUnlock={() => {
+            markRestrictedUnlocked();
+            setUnlocked(true);
+            setPwOpen(false);
+            setOpen(true);
+          }}
+        />
+      </span>
+    );
+  }
 
   // Curated set of files: one link that opens a chooser with a preview of each item.
   if (items && items.length > 0) {

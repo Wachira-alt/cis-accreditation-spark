@@ -403,7 +403,7 @@ export const part2: Section = {
         },
         {
           label: "Human Resource Management Policy",
-          href: "https://drive.google.com/file/d/1KGLwEe8ZZb0j9GyrcYnicA3XBlCnlt1w/view?usp=drive_link",
+          href: "https://drive.google.com/file/d/1KGLwEe8ZZb0j9GyrcYnicA3XBlCnlt1w/view",
         },
         {
           label: "Recruitment and Retention Policy",
@@ -493,7 +493,7 @@ export const part2: Section = {
         },
         {
           label: "Homework Policy",
-          href: "https://drive.google.com/file/d/1VRR-9XZ0tdlxzDS70ZYfrN6MS7Sqsirp/view?usp=drive_link",
+          href: "https://drive.google.com/file/d/1VRR-9XZ0tdlxzDS70ZYfrN6MS7Sqsirp/view",
         },
         {
           label: "Examinations Policy",
@@ -577,7 +577,7 @@ export const part2: Section = {
         },
         {
           label: "F5 SWOT Analysis (Restricted)",
-          href: "https://drive.google.com/file/d/1nsrkL2xTJ5KPixy7EAr5sEmajd3S-YYe/view?usp=drive_link",
+          href: "https://drive.google.com/file/d/1nsrkL2xTJ5KPixy7EAr5sEmajd3S-YYe/view",
         },
         {
           label: "F6 Financial Overview (Restricted)",

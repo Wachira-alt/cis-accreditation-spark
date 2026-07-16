@@ -194,7 +194,7 @@ export function FolderGalleryDialog({
 
           <div className="flex min-h-0 flex-1 flex-col sm:flex-row">
             {/* Sidebar list of items */}
-            <div className="shrink-0 overflow-y-auto border-b border-rule sm:w-64 sm:border-b-0 sm:border-r">
+            <div className="max-h-40 shrink-0 overflow-y-auto border-b border-rule sm:max-h-none sm:w-64 sm:border-b-0 sm:border-r">
               {folders.map((f) => (
                 <button
                   key={f.id}
@@ -224,7 +224,7 @@ export function FolderGalleryDialog({
             </div>
 
             {/* Preview stage */}
-            <div className="relative flex min-h-0 flex-1 flex-col bg-neutral-100">
+            <div className="relative flex min-h-[46vh] flex-1 flex-col bg-neutral-100 sm:min-h-0">
               <div className="relative flex-1">
                 {(loading || (currentFile && !frameLoaded)) && (
                   <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 text-sm text-foreground/50">
