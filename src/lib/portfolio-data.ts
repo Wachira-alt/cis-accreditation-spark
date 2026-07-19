@@ -172,7 +172,7 @@ export const part1: Section = {
         },
         {
           label: "C.4a Community Perception Data",
-          href: P,
+          href: "https://drive.google.com/drive/folders/1X4eNkL-Hn-jj7dWjguaMGFR4D5N_z8K1?usp=drive_link",
         },
         {
           label: "C.4b CIS Community Survey",
@@ -189,12 +189,8 @@ export const part1: Section = {
         "A reflection from Woodcreek's leadership on our hopes and priorities for the accreditation journey, the difference it is expected to make for our community, and what we hope to learn.",
       links: [
         {
-          label: "Leadership Reflection",
-          href: P,
-        },
-        {
           label: "Leadership Insights Video",
-          href: P,
+          href: "https://www.youtube.com/playlist?list=PLS_8fvxZUJQM",
         },
       ],
     },
