@@ -215,7 +215,7 @@ export const part2: Section = {
       links: [
         {
           label: "Guiding Principles",
-          href: "https://drive.google.com/file/d/1ePKXXEwesiG1lP-T8UfmotJIFba-5iuN/view?usp=drive_link",
+          href: "https://drive.google.com/file/d/1U1EV0Yg6BU1DaWtaEt0JZGBk5nnY4st9/view?usp=drive_link",
         },
         {
           label: "Guiding Principles in Practice",
@@ -460,7 +460,7 @@ export const part2: Section = {
         },
         {
           label: "Curriculum Documentation",
-          href: "https://drive.google.com/drive/folders/1M-daXM-hEIxDqRggTXeb0PkHJAlSLJsN?usp=drive_link",
+          href: "https://drive.google.com/drive/folders/1Qven3JWukrz-TJJ9eDqgzx2YwXqEHf07",
         },
         {
           label: "Inclusion Policy",
