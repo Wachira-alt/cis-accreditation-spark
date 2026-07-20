@@ -235,7 +235,7 @@ export const part2: Section = {
         },
         {
           label: "Philosophy in Action",
-          href: "https://drive.google.com/drive/folders/192CrZExsHivndk61LGrWRoTOWEY1-Ibj?usp=drive_link",
+          href: "https://drive.google.com/drive/folders/15jspffdLYxWTsir8T-Wx8DG3ij06Kjdf",
         },
       ],
     },
