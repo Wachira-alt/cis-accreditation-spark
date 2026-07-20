@@ -4,18 +4,18 @@ import type { Section } from "@/lib/portfolio-data";
 import { RotatingHero } from "@/components/RotatingHero";
 
 const SUBSECTION_IMAGES: Record<string, string> = {
-  "school-context": "/images/0B8A7198.webp",
+  "school-context": "/images/214A0522.webp",
   "community-voices": "/images/214A0522.webp",
   "community-data": "/images/472A0933.webp",
   "leadership-insights": "/images/472A1904.webp",
-  purpose: "/images/1K2A0042.webp",
+  purpose: "/images/DSC_2902.webp",
   "purpose-self-assessment": "/images/1K2A0135.webp",
   "practices-organisation": "/images/203A9261.webp",
   "practices-d1": "/images/DSC_2676.webp",
-  "practices-d2": "/images/0B8A7191.webp",
+  "practices-d2": "/images/DSC_3454.webp",
   "practices-d3": "/images/472A0933.webp",
   "practices-self-assessment": "/images/214A0522.webp",
-  planning: "/images/472A9626.webp",
+  planning: "/images/DSC_8996.webp",
   "planning-self-assessment": "/images/Copy of 472A7025.webp",
   overview: "/images/Copy of 472A7079.webp",
 };
