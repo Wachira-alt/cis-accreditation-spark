@@ -102,17 +102,17 @@ export const part1: Section = {
           href: "https://www.youtube.com/playlist?list=PLBRilMq0M96w https://www.youtube.com/playlist?list=PLYKdvgE62zQk",
         },
         {
-          label: "Educators and Staff",
+          label: "Non Teaching Staff",
           href: "/media/Security%201.mp4",
           items: [
             { label: "Security", href: "/media/Security%201.mp4" },
             { label: "Support Staff", href: "/media/Support%20Staff.mp4" },
             { label: "Facilities (audio)", href: "/media/Facilities.aac" },
-            {
-              label: "Educator",
-              href: "https://www.youtube.com/playlist?list=PLWcQqTitQewg",
-            },
           ],
+        },
+        {
+          label: "Educator",
+          href: "https://www.youtube.com/playlist?list=PLWcQqTitQewg",
         },
         {
           label: "Leaders (Videos)",
