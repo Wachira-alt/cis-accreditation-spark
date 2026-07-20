@@ -248,7 +248,7 @@ export const part2: Section = {
       links: [
         {
           label: "Purpose Self-Assessment",
-          href: P,
+          href: "https://drive.google.com/file/d/137srUmuT-ApZVucZnuzYri3RV_8buctv/view?usp=drive_link",
         },
       ],
     },
@@ -517,7 +517,7 @@ export const part2: Section = {
       links: [
         {
           label: "Practices Self-Assessment",
-          href: P,
+          href: "https://drive.google.com/file/d/10Eyzcyy8xwT1_8O1EucB2AxuhmZg_LzF/view?usp=drive_link",
         },
       ],
     },
@@ -592,7 +592,7 @@ export const part2: Section = {
       links: [
         {
           label: "Planning Self-Assessment",
-          href: P,
+          href: "https://drive.google.com/file/d/1khbkXDrRC76qPjryMqcRU171G61PP-sl/view?usp=drive_link",
         },
       ],
     },
