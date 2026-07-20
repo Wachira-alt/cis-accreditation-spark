@@ -219,7 +219,7 @@ export const part2: Section = {
       links: [
         {
           label: "Guiding Principles",
-          href: "https://drive.google.com/file/d/1U1EV0Yg6BU1DaWtaEt0JZGBk5nnY4st9/view?usp=drive_link",
+          href: "https://drive.google.com/file/d/1vaJNv32ipknT93HDM94Eij6YK4Lk73JX/view?usp=sharing",
         },
         {
           label: "Guiding Principles in Practice",
