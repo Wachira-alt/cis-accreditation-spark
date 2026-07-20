@@ -164,7 +164,7 @@ export const part1: Section = {
         },
         {
           label: "C.2b Holistic Learner Data",
-          href: "https://drive.google.com/file/d/1PH7SCGTJKqEVxOjj-NRugquqSjxY9hLX/view",
+          href: "https://docs.google.com/spreadsheets/d/1PIx3u9li4os8wflXWxgHYLB0EonoOnUb/edit?usp=drive_link&ouid=103731418080900965429&rtpof=true&sd=true",
         },
         {
           label: "C.3a Educator Data",
