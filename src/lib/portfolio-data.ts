@@ -233,6 +233,10 @@ export const part2: Section = {
           label: "Woodcreek Learner Profile",
           href: "https://drive.google.com/file/d/17NoPa12VdQT-W4ucoqBTPIe3bbYPWnfS/view",
         },
+        {
+          label: "Philosophy in Action",
+          href: "https://drive.google.com/drive/folders/192CrZExsHivndk61LGrWRoTOWEY1-Ibj?usp=drive_link",
+        },
       ],
     },
 
@@ -484,7 +488,7 @@ export const part2: Section = {
         },
         {
           label: "Transitions Policy",
-          href: "https://drive.google.com/file/d/1nn5Dx6RH75xe46H8CyVNRuC_Hmv87zcc/view",
+          href: "https://drive.google.com/file/d/1se7Q5qX2iXMCFtSoDs6kZb8WfMxkKqCk/view?usp=drive_link",
         },
         {
           label: "Homework Policy",
@@ -571,7 +575,7 @@ export const part2: Section = {
         },
         {
           label: "F5 SWOT Analysis (Restricted)",
-          href: "https://drive.google.com/file/d/1nsrkL2xTJ5KPixy7EAr5sEmajd3S-YYe/view",
+          href: "https://drive.google.com/file/d/1k_eOUc0eXBR-LX9zBPhiUxiQKJDplTHk/view?usp=drive_link",
         },
         {
           label: "F6 Financial Overview (Restricted)",
