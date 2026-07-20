@@ -108,6 +108,10 @@ export const part1: Section = {
             { label: "Security", href: "/media/Security%201.mp4" },
             { label: "Support Staff", href: "/media/Support%20Staff.mp4" },
             { label: "Facilities (audio)", href: "/media/Facilities.aac" },
+            {
+              label: "Educator",
+              href: "https://www.youtube.com/playlist?list=PLWcQqTitQewg",
+            },
           ],
         },
         {
