@@ -13,7 +13,7 @@ const SUBSECTION_IMAGES: Record<string, string> = {
   "practices-organisation": "/images/203A9261.webp",
   "practices-d1": "/images/DSC_2676.webp",
   "practices-d2": "/images/0B8A7191.webp",
-  "practices-d3": "/images/214A0182.webp",
+  "practices-d3": "/images/472A0933.webp",
   "practices-self-assessment": "/images/214A0522.webp",
   planning: "/images/472A9626.webp",
   "planning-self-assessment": "/images/Copy of 472A7025.webp",
