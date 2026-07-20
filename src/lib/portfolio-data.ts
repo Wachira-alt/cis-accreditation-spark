@@ -571,7 +571,7 @@ export const part2: Section = {
         },
         {
           label: "F4 Risk Management (Restricted)",
-          href: P,
+          href: "https://drive.google.com/file/d/1Pk1PvoMzADmMNObagTaB6wh1sEzKojzn/view?usp=drive_link",
         },
         {
           label: "F5 SWOT Analysis (Restricted)",
