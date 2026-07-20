@@ -422,7 +422,7 @@ export const part2: Section = {
         },
         {
           label: "Boarding Handbook",
-          href: "https://drive.google.com/file/d/1GdDU2Uh64xui2fV7zmydiU0ntuF_uvxi/view",
+          href: "https://drive.google.com/file/d/1mp21hM4URCQKuvQFjVYZAlQTowZ3YtOX/view?usp=drive_link",
         },
         {
           label: "Boarding Evidences",
