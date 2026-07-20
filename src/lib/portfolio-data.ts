@@ -455,8 +455,12 @@ export const part2: Section = {
           href: "https://drive.google.com/file/d/13NNvvQrZthhTIyUBYSJCJXIII0ljHd5u/view",
         },
         {
-          label: "Curriculum Policy and Documentation",
-          href: "https://drive.google.com/file/d/1Mb94-NRURN0JLYBXbKDHFmjuvLDjEP4R/view",
+          label: "Curriculum Policy",
+          href: "https://drive.google.com/file/d/1n4IgtGOfUqsUWu2E33fuIMFhEsc6zPR5/view?usp=sharing",
+        },
+        {
+          label: "Curriculum Documentation",
+          href: "https://drive.google.com/drive/folders/1M-daXM-hEIxDqRggTXeb0PkHJAlSLJsN?usp=drive_link",
         },
         {
           label: "Inclusion Policy",
