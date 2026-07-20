@@ -28,7 +28,7 @@ const HERO_IMAGE_POOLS: Record<string, string[]> = {
     "/images/DSC_9211.webp",
   ],
   "part-2": [
-    // "/images/DSC_3101.webp",
+    "/images/DSC_3101.webp",
     "/images/DSC_3220.webp",
     "/images/DSC_3454.webp",
     "/images/DSC_8996.webp",
