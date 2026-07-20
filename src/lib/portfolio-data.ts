@@ -164,11 +164,11 @@ export const part1: Section = {
         },
         {
           label: "C.3a Educator Data",
-          href: "https://drive.google.com/file/d/1rme2uDZkpAHxOSWY1TAGDQIOE1DgxP7l/view",
+          href: "https://docs.google.com/spreadsheets/d/1nW7xtzotPgZDFP5ZZpiJF-iTNaK6qNw6/edit?usp=drive_link&ouid=103731418080900965429&rtpof=true&sd=true",
         },
         {
           label: "C.3b Support Staff and Contractor Data",
-          href: "https://drive.google.com/file/d/1rme2uDZkpAHxOSWY1TAGDQIOE1DgxP7l/view",
+          href: "https://docs.google.com/spreadsheets/d/1nW7xtzotPgZDFP5ZZpiJF-iTNaK6qNw6/edit?usp=drive_link&ouid=103731418080900965429&rtpof=true&sd=true",
         },
         {
           label: "C.4a Community Perception Data",
