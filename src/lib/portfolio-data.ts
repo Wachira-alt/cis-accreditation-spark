@@ -304,7 +304,7 @@ export const part2: Section = {
         },
         {
           label: "Anti-Discrimination and Equity Policy",
-          href: "https://drive.google.com/file/d/1Z2vQ-DYSDbfyzjm_25MugiEWagofMG0r/view",
+          href: "https://drive.google.com/file/d/106sZQEvJ8QG7uqHBmcaixbTgRkQfzDSz/view?usp=drive_link",
         },
         {
           label: "Code of Conduct",
@@ -312,11 +312,11 @@ export const part2: Section = {
         },
         {
           label: "Communication Policy",
-          href: "https://drive.google.com/file/d/15pgyvFP0jB7ntxOwJc4b_xWaCwjAe_Pa/view",
+          href: "https://drive.google.com/file/d/119BEZ2N3SlxrsjBhmQrsmZRECBoKetnd/view?usp=drive_link",
         },
         {
           label: "Policy, Procedure and Programme Review",
-          href: "https://drive.google.com/file/d/1PKYfEdPtaThcvFl_89ezpg5kL9KagbCa/view",
+          href: "https://drive.google.com/file/d/10bY0vwzV2AF5j_jgMq_1EuuJFwybj_qv/view?usp=drive_link",
         },
         {
           label: "Facilities Planning Policy",
@@ -340,7 +340,7 @@ export const part2: Section = {
         },
         {
           label: "Policy Manual",
-          href: "https://drive.google.com/file/d/1jTanBMc0EosiBixzQs3LiYXgQ9tKptq3/view",
+          href: "https://drive.google.com/file/d/1Y29xJ_tYk8ogk8GybWaM1-Cw1uJT-iul/view?usp=drive_link",
         },
         {
           label: "Safer Recruitment Policy",
@@ -390,7 +390,7 @@ export const part2: Section = {
         },
         {
           label: "Facilities Management Policy",
-          href: "https://drive.google.com/file/d/1pNe3ge05bxOJR4QtP2Pkw655OFxzhQ3c/view",
+          href: "https://drive.google.com/file/d/1X6OpWLBaiSOpz75ZsvA3hu4LxSy-U2kl/view?usp=drive_link",
         },
         {
           label: "Health, Safety and Security Policy",
@@ -406,11 +406,11 @@ export const part2: Section = {
         },
         {
           label: "Student Support Services Policy (Well-being and Pastoral)",
-          href: "https://drive.google.com/file/d/1he7kJRw5KG3PG1bRH5l1SIUp45S50rPZ/view",
+          href: "https://drive.google.com/file/d/1QI--4SO9xE8KsGkGvPo60HhAOCvvDDPB/view?usp=drive_link",
         },
         {
           label: "Sustainability Policy",
-          href: "https://drive.google.com/file/d/1BD8DHy97kpJvA4aziRtSaqvswEkhdzha/view",
+          href: "https://drive.google.com/file/d/14ecM0Y_R4u3-7lHaqS14Nt-vb5GoeEiG/view?usp=drive_link",
         },
         {
           label: "Ethical Use of Technology and AI Policy",
@@ -431,6 +431,10 @@ export const part2: Section = {
         {
           label: "Medical Handbook",
           href: "https://drive.google.com/file/d/1d5wmumXKZ3aIYa9nB6pT58ytaAwrV22f/view",
+        },
+        {
+          label: "Counselling and Wellbeing Handbook",
+          href: "https://drive.google.com/file/d/1ssNvGHGu93p0EPEwHLjGbGudGgFbOd9c/view?usp=drive_link",
         },
 
 
@@ -476,11 +480,11 @@ export const part2: Section = {
         },
         {
           label: "Parent Engagement Policy",
-          href: "https://drive.google.com/file/d/1eIkDFv64M_dzkmzfgNEbTyTguH1E3dYQ/view",
+          href: "https://drive.google.com/file/d/1ssNvGHGu93p0EPEwHLjGbGudGgFbOd9c/view?usp=drive_link",
         },
         {
           label: "Professional Learning and Growth Policy",
-          href: "https://drive.google.com/file/d/1bbL16KXpBaKoX6s9NT7es_hA7Xne45Ae/view",
+          href: "https://drive.google.com/file/d/1fp8Erqw-65GSA1urWKbcoGI2f4d0qpiV/view?usp=drive_link",
         },
         {
           label: "Student Support Services Policy (Learning Support)",
@@ -504,7 +508,7 @@ export const part2: Section = {
         },
         {
           label: "Educational Visits and Off-Site Learning Policy",
-          href: "https://drive.google.com/file/d/1TIG8tt4c1cxPLg0WCJv79CCQ2OeqwKpN/view",
+          href: "https://drive.google.com/file/d/1SjYnpI_7dC2-E40zzRxUTqslUK_j7wuH/view?usp=drive_link",
         },
         {
           label: "Learning and Teaching Procedures",
