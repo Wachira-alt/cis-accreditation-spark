@@ -214,28 +214,20 @@ export const part2: Section = {
         "How Woodcreek states its purpose and guiding principles, and how these are lived out across the school's programmes and daily operations, including our description of the Woodcreek learner.",
       links: [
         {
-          label: "Mission and Vision Statements",
-          href: "https://drive.google.com/file/d/1EoA93rlqGdxlI4UUrbLJTNVUkDIY6KJ3/view",
-        },
-        {
           label: "Guiding Principles",
-          href: "https://drive.google.com/file/d/1LUWB6uqFPTdvArAwW_08Hm1Bt40gVWLU/view",
+          href: "https://drive.google.com/file/d/1ePKXXEwesiG1lP-T8UfmotJIFba-5iuN/view?usp=drive_link",
         },
         {
           label: "Guiding Principles in Practice",
-          href: "https://drive.google.com/file/d/1GS_hDjSVfXkV9vu-p_CItL0jagaKaAxU/view",
+          href: "https://drive.google.com/drive/folders/15jspffdLYxWTsir8T-Wx8DG3ij06Kjdf",
         },
         {
           label: "Review of Guiding Statements",
-          href: "https://drive.google.com/file/d/10wAXQ5auoej4MGzRNi1SdZSeidDZ5JM7/view",
+          href: "https://drive.google.com/file/d/1SdPij11dWLX8rJ0UoOqAd2Rf0z4MaX2f/view?usp=drive_link",
         },
         {
           label: "Woodcreek Learner Profile",
           href: "https://drive.google.com/file/d/17NoPa12VdQT-W4ucoqBTPIe3bbYPWnfS/view",
-        },
-        {
-          label: "Philosophy in Action",
-          href: "https://drive.google.com/drive/folders/15jspffdLYxWTsir8T-Wx8DG3ij06Kjdf",
         },
       ],
     },
@@ -427,6 +419,10 @@ export const part2: Section = {
         {
           label: "Boarding Handbook",
           href: "https://drive.google.com/file/d/1GdDU2Uh64xui2fV7zmydiU0ntuF_uvxi/view",
+        },
+        {
+          label: "Boarding Evidences",
+          href: "https://drive.google.com/drive/folders/1PoBOnxK84Errjm-Tw3NPwVUV6qIzQtlS",
         },
         {
           label: "Medical Handbook",
