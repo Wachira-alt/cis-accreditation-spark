@@ -24,7 +24,7 @@ export function SiteFooter() {
             School dashboard
           </a>
           <a
-            href="https://woodcreekschool.sc.ke"
+            href="https://www.facebook.com/woodcreekschool/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-brand no-underline hover:underline"
@@ -32,7 +32,7 @@ export function SiteFooter() {
             Facebook
           </a>
           <a
-            href="https://www.facebook.com/woodcreekschool/"
+            href="https://www.instagram.com/woodcreekschool/?hl=en"
             target="_blank"
             rel="noopener noreferrer"
             className="text-brand no-underline hover:underline"
@@ -40,7 +40,7 @@ export function SiteFooter() {
             Instagram
           </a>
           <a
-            href="https://www.instagram.com/woodcreekschool/?hl=en"
+            href="https://www.youtube.com/@WoodcreekSchoolKenya-vy9yj"
             target="_blank"
             rel="noopener noreferrer"
             className="text-brand no-underline hover:underline"
