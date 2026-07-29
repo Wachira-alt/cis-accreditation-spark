@@ -7,6 +7,7 @@ import {
   FileText,
   Folder,
   Loader2,
+  Lock,
   LogIn,
   Music,
   Image as ImageIcon,
@@ -126,7 +127,14 @@ export function FolderGalleryDialog({
         return;
       }
       try {
-        setItems(await listFolder(id, token));
+        const result = await listFolder(id, token);
+        setItems(result);
+        // A private folder returns an empty list to the anonymous API key rather than a 403.
+        // If nothing is visible and the reviewer hasn't signed in yet, prompt sign-in instead
+        // of a dead-end "empty" message.
+        if (result.length === 0 && !token && configured) {
+          setNeedsAuth(true);
+        }
       } catch (e) {
         const msg = e instanceof Error ? e.message : "Could not load this folder.";
         // 401/403 usually means a privately-shared folder — offer sign-in instead of a raw error.
@@ -263,11 +271,7 @@ export function FolderGalleryDialog({
                 </button>
               ))}
               {empty && (
-                <p className="px-3 py-4 text-[13px] text-foreground/50">
-                  {configured && !signedIn
-                    ? "Nothing visible here. If this folder was shared with you, sign in to view it."
-                    : "This folder is empty."}
-                </p>
+                <p className="px-3 py-4 text-[13px] text-foreground/50">This folder is empty.</p>
               )}
             </div>
 
@@ -291,23 +295,41 @@ export function FolderGalleryDialog({
                 )}
 
                 {needsAuth && !loading && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center text-sm text-foreground/70">
-                    <p className="max-w-sm">
-                      This evidence is shared privately. Sign in with the Google account you were
-                      given access with to view it here.
-                    </p>
-                    {configured ? (
-                      <button
-                        onClick={signInAndReload}
-                        className="inline-flex items-center gap-2 rounded-sm bg-brand px-4 py-2 text-sm font-medium text-white hover:bg-[#800000]"
-                      >
-                        <LogIn className="h-4 w-4" aria-hidden="true" /> Sign in with Google
-                      </button>
-                    ) : (
-                      <a href={href} target="_blank" rel="noopener noreferrer" className="text-brand hover:underline">
-                        Open the folder in Drive instead
-                      </a>
-                    )}
+                  <div className="absolute inset-0 flex items-center justify-center px-6">
+                    <div className="flex w-full max-w-sm flex-col items-center gap-4 rounded-lg border border-rule bg-white px-8 py-10 text-center shadow-sm">
+                      <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand">
+                        <Lock className="h-5 w-5" aria-hidden="true" />
+                      </span>
+                      <div className="space-y-1.5">
+                        <h3 className="font-serif text-base text-brand">Private evidence</h3>
+                        <p className="text-sm text-foreground/70">
+                          Sign in with the Google account you were given access with to view this
+                          folder here.
+                        </p>
+                      </div>
+                      {configured ? (
+                        <button
+                          onClick={signInAndReload}
+                          className="inline-flex items-center gap-2 rounded-sm bg-brand px-4 py-2 text-sm font-medium text-white hover:bg-[#800000]"
+                        >
+                          <LogIn className="h-4 w-4" aria-hidden="true" /> Sign in with Google
+                        </button>
+                      ) : (
+                        <a href={href} target="_blank" rel="noopener noreferrer" className="text-brand hover:underline">
+                          Open the folder in Drive instead
+                        </a>
+                      )}
+                      {configured && (
+                        <a
+                          href={href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[11px] uppercase tracking-[0.12em] text-foreground/50 hover:text-brand no-underline hover:no-underline"
+                        >
+                          Open in Drive ↗
+                        </a>
+                      )}
+                    </div>
                   </div>
                 )}
 
