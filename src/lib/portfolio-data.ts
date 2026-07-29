@@ -171,6 +171,10 @@ export const part1: Section = {
           href: "https://drive.google.com/drive/folders/14HAp7tehZN_cY48EMFRqkop95CCGOJmd",
         },
         {
+          label: "Holistic Learner Data Video evidences",
+          href: "https://www.youtube.com/playlist?list=PLPwwN7rKUQQY",
+        },
+        {
           label: "C.3a Educator Data",
           href: "https://docs.google.com/spreadsheets/d/1nW7xtzotPgZDFP5ZZpiJF-iTNaK6qNw6/edit?usp=drive_link&ouid=103731418080900965429&rtpof=true&sd=true",
         },
