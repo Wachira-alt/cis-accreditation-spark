@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import logo from "@/assets/woodcreek-logo.png";
 import { SearchCommand } from "@/components/SearchCommand";
+import { GoogleAuthButton } from "@/components/GoogleAuthButton";
 
 const nav = [
   { to: "/", label: "Overview", short: "Overview" },
@@ -36,7 +37,10 @@ export function SiteHeader() {
             </span>
           </span>
         </Link>
-        <SearchCommand />
+        <div className="flex items-center gap-2 shrink-0">
+          <SearchCommand />
+          <GoogleAuthButton />
+        </div>
       </div>
       <nav
         aria-label="Portfolio parts"

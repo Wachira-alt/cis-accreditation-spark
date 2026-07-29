@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import logo from "../assets/woodcreek-logo.png";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { GoogleAuthProvider } from "../lib/google-auth";
 import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 
@@ -131,15 +132,17 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="relative min-h-screen flex flex-col">
-        <div className="relative z-10 flex flex-col flex-1 min-h-screen">
-          <SiteHeader />
-          <main id="main-content" className="flex-1">
-            <Outlet />
-          </main>
-          <SiteFooter />
+      <GoogleAuthProvider>
+        <div className="relative min-h-screen flex flex-col">
+          <div className="relative z-10 flex flex-col flex-1 min-h-screen">
+            <SiteHeader />
+            <main id="main-content" className="flex-1">
+              <Outlet />
+            </main>
+            <SiteFooter />
+          </div>
         </div>
-      </div>
+      </GoogleAuthProvider>
     </QueryClientProvider>
   );
 }

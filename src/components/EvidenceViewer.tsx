@@ -15,7 +15,7 @@ import {
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { FolderGalleryDialog, getDriveFolderId } from "@/components/FolderGallery";
 import { YouTubePlaylistDialog, getYouTubePlaylistIds } from "@/components/YouTubeGallery";
-import { GOOGLE_API_KEY, RESTRICTED_PASSWORD } from "@/lib/config";
+import { DRIVE_ENABLED, GOOGLE_API_KEY, RESTRICTED_PASSWORD } from "@/lib/config";
 
 /**
  * Extracts a Google Drive file ID from any common Drive URL shape:
@@ -690,8 +690,8 @@ export function EvidenceLinkRow({
     );
   }
 
-  // Drive folder with an API key configured: in-app gallery with play and next / previous.
-  if (folderId && GOOGLE_API_KEY) {
+  // Drive folder: in-app gallery when Drive access is possible (public API key or reviewer sign-in).
+  if (folderId && DRIVE_ENABLED) {
     return (
       <span className="inline-flex flex-wrap items-center gap-x-3 gap-y-1">
         <button

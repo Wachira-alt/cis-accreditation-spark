@@ -7,12 +7,14 @@ import {
   FileText,
   Folder,
   Loader2,
+  LogIn,
   Music,
   Image as ImageIcon,
   X,
 } from "lucide-react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { GOOGLE_API_KEY } from "@/lib/config";
+import { useGoogleAuth } from "@/lib/google-auth";
 
 /** Extract a Google Drive folder ID from a /drive/folders/<id> link. */
 export function getDriveFolderId(href: string): string | null {
@@ -46,17 +48,25 @@ function KindIcon({ mimeType }: { mimeType: string }) {
   return <FileText className={cls} aria-hidden="true" />;
 }
 
-async function listFolder(folderId: string): Promise<DriveItem[]> {
+/**
+ * List a folder's children. With a signed-in reviewer's token the call is made as
+ * them, so privately-shared folders resolve; otherwise it falls back to the public
+ * API key (folders shared "anyone with the link").
+ */
+async function listFolder(folderId: string, token: string | null): Promise<DriveItem[]> {
   const params = new URLSearchParams({
     q: `'${folderId}' in parents and trashed = false`,
-    key: GOOGLE_API_KEY,
     fields: "files(id,name,mimeType)",
     orderBy: "folder,name",
     pageSize: "200",
     supportsAllDrives: "true",
     includeItemsFromAllDrives: "true",
   });
-  const res = await fetch(`https://www.googleapis.com/drive/v3/files?${params.toString()}`);
+  // An OAuth token identifies the caller; the anonymous key only sees public folders.
+  if (!token && GOOGLE_API_KEY) params.set("key", GOOGLE_API_KEY);
+  const res = await fetch(`https://www.googleapis.com/drive/v3/files?${params.toString()}`, {
+    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+  });
   if (!res.ok) {
     let detail = "";
     try {
@@ -84,6 +94,8 @@ export function FolderGalleryDialog({
   folderId: string;
   href: string;
 }) {
+  const { configured, signedIn, signIn, getToken } = useGoogleAuth();
+
   // Breadcrumb stack of {id, name} so nested folders (e.g. Students -> KS3) can be browsed.
   const [stack, setStack] = useState<{ id: string; name: string }[]>([{ id: folderId, name: title }]);
   const [items, setItems] = useState<DriveItem[]>([]);
@@ -91,23 +103,55 @@ export function FolderGalleryDialog({
   const [loading, setLoading] = useState(true);
   const [frameLoaded, setFrameLoaded] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // True when the folder can't be read anonymously and the reviewer should sign in.
+  const [needsAuth, setNeedsAuth] = useState(false);
 
   const folders = items.filter((i) => i.mimeType === FOLDER_MIME);
   const files = items.filter((i) => i.mimeType !== FOLDER_MIME);
   const currentFile = files[index];
+  const empty = !loading && !error && !needsAuth && folders.length === 0 && files.length === 0;
 
-  const load = useCallback(async (id: string) => {
-    setLoading(true);
-    setError(null);
-    setIndex(0);
+  const load = useCallback(
+    async (id: string) => {
+      setLoading(true);
+      setError(null);
+      setNeedsAuth(false);
+      setIndex(0);
+      const token = getToken();
+      // A private folder needs an identity: with neither a token nor a public key, ask first.
+      if (!token && !GOOGLE_API_KEY) {
+        setItems([]);
+        setNeedsAuth(true);
+        setLoading(false);
+        return;
+      }
+      try {
+        setItems(await listFolder(id, token));
+      } catch (e) {
+        const msg = e instanceof Error ? e.message : "Could not load this folder.";
+        // 401/403 usually means a privately-shared folder — offer sign-in instead of a raw error.
+        if (configured && /\b40[13]\b|permission|insufficient|login required/i.test(msg)) {
+          setNeedsAuth(true);
+        } else {
+          setError(msg);
+        }
+      } finally {
+        setLoading(false);
+      }
+    },
+    [getToken, configured],
+  );
+
+  const currentFolderId = stack[stack.length - 1]?.id ?? folderId;
+
+  async function signInAndReload() {
     try {
-      setItems(await listFolder(id));
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Could not load this folder.");
-    } finally {
-      setLoading(false);
+      await signIn();
+      await load(currentFolderId);
+    } catch {
+      /* cancelled; leave the prompt in place */
     }
-  }, []);
+  }
 
   // Reset to the root folder each time the dialog opens.
   useEffect(() => {
@@ -218,8 +262,12 @@ export function FolderGalleryDialog({
                   <span className="truncate">{f.name}</span>
                 </button>
               ))}
-              {!loading && folders.length === 0 && files.length === 0 && (
-                <p className="px-3 py-4 text-[13px] text-foreground/50">This folder is empty.</p>
+              {empty && (
+                <p className="px-3 py-4 text-[13px] text-foreground/50">
+                  {configured && !signedIn
+                    ? "Nothing visible here. If this folder was shared with you, sign in to view it."
+                    : "This folder is empty."}
+                </p>
               )}
             </div>
 
@@ -239,6 +287,27 @@ export function FolderGalleryDialog({
                     <a href={href} target="_blank" rel="noopener noreferrer" className="text-brand hover:underline">
                       Open the folder in Drive instead
                     </a>
+                  </div>
+                )}
+
+                {needsAuth && !loading && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center text-sm text-foreground/70">
+                    <p className="max-w-sm">
+                      This evidence is shared privately. Sign in with the Google account you were
+                      given access with to view it here.
+                    </p>
+                    {configured ? (
+                      <button
+                        onClick={signInAndReload}
+                        className="inline-flex items-center gap-2 rounded-sm bg-brand px-4 py-2 text-sm font-medium text-white hover:bg-[#800000]"
+                      >
+                        <LogIn className="h-4 w-4" aria-hidden="true" /> Sign in with Google
+                      </button>
+                    ) : (
+                      <a href={href} target="_blank" rel="noopener noreferrer" className="text-brand hover:underline">
+                        Open the folder in Drive instead
+                      </a>
+                    )}
                   </div>
                 )}
 
