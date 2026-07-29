@@ -278,7 +278,7 @@ export const part2: Section = {
         },
         {
           label: "C3 Staff List",
-          href: "https://drive.google.com/file/d/1rme2uDZkpAHxOSWY1TAGDQIOE1DgxP7l/view",
+          href: "https://docs.google.com/spreadsheets/d/1fA3FrVrSjsSuPSc24-UKzl58TcdP5jvk/edit?gid=2135057826#gid=2135057826",
         },
         {
           label: "C4 Human Resources Documentation: Safer Recruitment Policy",
