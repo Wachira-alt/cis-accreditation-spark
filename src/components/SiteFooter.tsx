@@ -13,7 +13,7 @@ export function SiteFooter() {
             rel="noopener noreferrer"
             className="text-brand no-underline hover:underline"
           >
-            School website ↗
+            School website
           </a>
           <a
             href="https://dashboard.woodcreekschool.sc.ke"
@@ -21,15 +21,31 @@ export function SiteFooter() {
             rel="noopener noreferrer"
             className="text-brand no-underline hover:underline"
           >
-            School dashboard ↗
+            School dashboard
           </a>
           <a
-            href="https://www.youtube.com/@WoodcreekSchoolKenya-vy9yj/videos"
+            href="https://woodcreekschool.sc.ke"
             target="_blank"
             rel="noopener noreferrer"
             className="text-brand no-underline hover:underline"
           >
-            YouTube ↗
+            Facebook
+          </a>
+          <a
+            href="https://www.facebook.com/woodcreekschool/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand no-underline hover:underline"
+          >
+            Instagram
+          </a>
+          <a
+            href="https://www.instagram.com/woodcreekschool/?hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand no-underline hover:underline"
+          >
+            YouTube
           </a>
           <p className="text-foreground">© {new Date().getFullYear()} Woodcreek School</p>
         </nav>

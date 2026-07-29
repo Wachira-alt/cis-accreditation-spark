@@ -167,6 +167,10 @@ export const part1: Section = {
           href: "https://docs.google.com/spreadsheets/d/1PIx3u9li4os8wflXWxgHYLB0EonoOnUb/edit?usp=drive_link&ouid=103731418080900965429&rtpof=true&sd=true",
         },
         {
+          label: "Holistic Learner Data Photo evidences",
+          href: "https://drive.google.com/drive/folders/14HAp7tehZN_cY48EMFRqkop95CCGOJmd",
+        },
+        {
           label: "C.3a Educator Data",
           href: "https://docs.google.com/spreadsheets/d/1nW7xtzotPgZDFP5ZZpiJF-iTNaK6qNw6/edit?usp=drive_link&ouid=103731418080900965429&rtpof=true&sd=true",
         },
@@ -177,6 +181,10 @@ export const part1: Section = {
         {
           label: "C.4a Community Perception Data",
           href: "https://drive.google.com/drive/folders/1X4eNkL-Hn-jj7dWjguaMGFR4D5N_z8K1?usp=drive_link",
+        },
+        {
+          label: "Community Perception Data Evidences",
+          href: "https://drive.google.com/drive/folders/1GbMYItiYv1Lm1ZquPW7pvrrVdflo_N_o",
         },
         {
           label: "C.4b CIS Community Survey",
