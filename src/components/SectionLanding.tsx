@@ -15,7 +15,7 @@ const SUBSECTION_IMAGES: Record<string, string> = {
   "practices-d2": "/images/DSC_3454.webp",
   "practices-d3": "/images/472A0933.webp",
   "practices-self-assessment": "/images/DSC_3733 (2).webp",
-  planning: "/images/DSC_3642 (2)",
+  planning: "/images/DSC_3642.webp",
   "planning-self-assessment": "/images/Copy of 472A7025.webp",
   overview: "/images/Copy of 472A7079.webp",
 };
@@ -31,12 +31,12 @@ const HERO_IMAGE_POOLS: Record<string, string[]> = {
     "/images/DSC_3101.webp",
     "/images/DSC_3220.webp",
     "/images/DSC_3454.webp",
-    "/images/DSC_3642 (2)",
+    "/images/DSC_3642.webp",
   ],
   "part-3": [
     "/images/DSC_3980.webp",
     "/images/DSC_3319.webp",
-    "/images/DSC_3642 (2)",
+    "/images/DSC_3642.webp",
     "/images/DSC_3971.webp",
   ],
 };
