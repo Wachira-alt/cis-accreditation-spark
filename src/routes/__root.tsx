@@ -93,7 +93,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content: "Portfolio of reflections and evidence for CIS International Accreditation.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: "https://cis.woodcreekschool.sc.ke/images/DSC_9211.webp" },
+      { property: "og:image", content: "https://cis.woodcreekschool.sc.ke/images/DSC_3032.webp" },
       { property: "og:url", content: "https://cis.woodcreekschool.sc.ke/" },
     ],
     links: [

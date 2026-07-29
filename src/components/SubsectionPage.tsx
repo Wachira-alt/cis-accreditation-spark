@@ -6,12 +6,12 @@ import { getPrevNext } from "@/lib/portfolio-nav";
 
 const SUBSECTION_IMAGE_POOLS: Record<string, string[]> = {
   "school-context": ["/images/0B8A7198.webp", "/images/DSC_2676.webp", "/images/DSC_2902.webp"],
-  "community-voices": ["/images/214A0522.webp", "/images/DSC_3227.webp", "/images/DSC_3733.webp"],
+  "community-voices": ["/images/473A4691.webp", "/images/DSC_3227.webp", "/images/DSC_3733 (2).webp"],
   "community-data": ["/images/472A0933.webp", "/images/DSC_2676.webp", "/images/DSC_3227.webp"],
   "leadership-insights": [
     "/images/472A1904.webp",
     "/images/DSC_2902.webp",
-    "/images/DSC_3733.webp",
+    "/images/DSC_3733 (2).webp",
   ],
   purpose: ["/images/1K2A0042.webp", "/images/DSC_3101.webp", "/images/DSC_3220.webp"],
   "purpose-self-assessment": ["/images/1K2A0135.webp", "/images/DSC_3454.webp"],
@@ -22,11 +22,11 @@ const SUBSECTION_IMAGE_POOLS: Record<string, string[]> = {
   ],
   "practices-d1": ["/images/DSC_2676.webp", "/images/DSC_3220.webp", "/images/DSC_3454.webp"],
   "practices-d2": ["/images/0B8A7191.webp", "/images/DSC_3642.webp", "/images/DSC_3101.webp"],
-  "practices-d3": ["/images/214A0182.webp", "/images/DSC_3454.webp", "/images/DSC_3220.webp"],
-  "practices-self-assessment": ["/images/214A0522.webp", "/images/DSC_3642.webp"],
+  "practices-d3": ["/images/472A8928.webp", "/images/DSC_3454.webp", "/images/DSC_3220.webp"],
+  "practices-self-assessment": ["/images/473A4691.webp", "/images/DSC_3642.webp"],
   planning: ["/images/472A9626.webp", "/images/DSC_3101.webp", "/images/DSC_3220.webp"],
   "planning-self-assessment": ["/images/Copy of 472A7025.webp", "/images/DSC_3642.webp"],
-  overview: ["/images/Copy of 472A7079.webp", "/images/DSC_3980.webp", "/images/DSC_8934.webp"],
+  overview: ["/images/Copy of 472A7079.webp", "/images/DSC_3980.webp", "/images/DSC_3012.webp"],
 };
 
 function splitTitle(title: string) {

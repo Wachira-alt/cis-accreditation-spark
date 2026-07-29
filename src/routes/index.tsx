@@ -3,10 +3,10 @@ import { sections } from "@/lib/portfolio-data";
 import { RotatingHero } from "@/components/RotatingHero";
 
 const OVERVIEW_IMAGES = [
-  "/images/DSC_9211.webp",
-  "/images/DSC_8996.webp",
-  "/images/DSC_8934.webp",
-  "/images/DSC_8738.webp",
+  "/images/DSC_3032.webp",
+  "/images/DSC_3642.webp",
+  "/images/DSC_3319.webp",
+  "/images/DSC_3980.webp",
 ];
 
 export const Route = createFileRoute("/")({
